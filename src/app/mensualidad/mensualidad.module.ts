@@ -10,11 +10,13 @@ import { FormularioPagoComponent } from './formulario-pago/formulario-pago.compo
 import { TablaServicioComponent } from './tabla-servicio/tabla-servicio.component';
 import { TablaPagoComponent } from './tabla-pago/tabla-pago.component';
 import { TablaResumenComponent } from './tabla-resumen/tabla-resumen.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
     MensualidadComponent,
+    MenuComponent,
     FormularioServicioComponent,
     FormularioPagoComponent,
     TablaServicioComponent,

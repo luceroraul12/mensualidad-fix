@@ -1,0 +1,36 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push">
+
+        <mat-toolbar>
+            <span>Menú</span>
+            <span class="spacer"></span>
+
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu_book</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <div *ngFor="let item of rutasComponentes">
+                <a [routerLink]="item.ruta" mat-list-item>
+                    <span> {{item.texto}} </span>
+                </a>
+            </div>
+
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu_book</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+
+    </div>
+
+</mat-sidenav-container>

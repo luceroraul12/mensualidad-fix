@@ -6,7 +6,22 @@ const routes: Routes = [
   {
     path: '',
     component: MensualidadComponent
-  }
+  },
+  {
+    path: 'formularioServicio'
+  },
+  {
+    path: 'formularioPago'
+  },
+  {
+    path: 'tablaServicio'
+  },
+  {
+    path: 'tablaPago'
+  },
+  {
+    path: 'tablaResumen'
+  },
 ];
 
 @NgModule({

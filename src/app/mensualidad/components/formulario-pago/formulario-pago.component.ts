@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-formulario-pago',
   templateUrl: './formulario-pago.component.html',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class FormularioPagoComponent implements OnInit {
+
+  
 
   constructor() { }
 

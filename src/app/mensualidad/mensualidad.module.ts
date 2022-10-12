@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { ServicioComponent } from './servicio/servicio.component';
 import { PagComponent } from './pag/pag.component';
 import { ResumenComponent } from './resumen/resumen.component';
+import { FormularioResumenComponent } from './components/formulario-resumen/formulario-resumen.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ResumenComponent } from './resumen/resumen.component';
     TablaResumenComponent,
     ServicioComponent,
     PagComponent,
-    ResumenComponent
+    ResumenComponent,
+    FormularioResumenComponent
   ],
   imports: [
     CommonModule,

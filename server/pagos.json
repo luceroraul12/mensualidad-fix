@@ -1,0 +1,12 @@
+{
+  "id": "5",
+  "fechaPago": "3/9/2022",
+  "pagoEfectuado": 7212.0,
+  "servicio": [
+    {
+      "id": "44",
+      "servicio": "Meejo",
+      "url": "http://dummyimage.com/137x100.png/ff4444/ffffff"
+    }
+  ]
+}

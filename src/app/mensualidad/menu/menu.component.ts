@@ -34,6 +34,18 @@ export class MenuComponent implements OnInit {
       ruta: "tablaResumen",
       texto: "Tabla para Resumen"
     },
+    {
+      ruta: "servicios",
+      texto: "Servicios"
+    },
+    {
+      ruta: "pagos",
+      texto: "Pagos"
+    },
+    {
+      ruta: "resumenes",
+      texto: "Resumenes"
+    },
   ]
 
 

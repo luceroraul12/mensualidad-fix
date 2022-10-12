@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-
 import { MensualidadRoutingModule } from './mensualidad-routing.module';
 import { MensualidadComponent } from './mensualidad.component';
 import { MaterialModule } from '../material/material.module';
@@ -14,6 +11,7 @@ import { FormularioServicioComponent } from './components/formulario-servicio/fo
 import { TablaPagoComponent } from './components/tabla-pago/tabla-pago.component';
 import { TablaResumenComponent } from './components/tabla-resumen/tabla-resumen.component';
 import { TablaServicioComponent } from './components/tabla-servicio/tabla-servicio.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -30,7 +28,8 @@ import { TablaServicioComponent } from './components/tabla-servicio/tabla-servic
     CommonModule,
     MensualidadRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule
   ]
 })
 export class MensualidadModule { }

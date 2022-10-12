@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 import { MensualidadRoutingModule } from './mensualidad-routing.module';
 import { MensualidadComponent } from './mensualidad.component';
 import { MaterialModule } from '../material/material.module';

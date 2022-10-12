@@ -16,26 +16,6 @@ const routes: Routes = [
     component: MensualidadComponent,
     children: [
       {
-        path: 'formularioServicio',
-        component: FormularioServicioComponent
-      },
-      {
-        path: 'formularioPago',
-        component: FormularioPagoComponent
-      },
-      {
-        path: 'tablaServicio',
-        component: TablaServicioComponent
-      },
-      {
-        path: 'tablaPago',
-        component: TablaPagoComponent
-      },
-      {
-        path: 'tablaResumen',
-        component: TablaResumenComponent
-      },
-      {
         path: 'servicios',
         component: ServicioComponent
       },

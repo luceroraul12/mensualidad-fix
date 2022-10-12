@@ -13,6 +13,9 @@ import { TablaResumenComponent } from './components/tabla-resumen/tabla-resumen.
 import { TablaServicioComponent } from './components/tabla-servicio/tabla-servicio.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
+import { ServicioComponent } from './servicio/servicio.component';
+import { PagComponent } from './pag/pag.component';
+import { ResumenComponent } from './resumen/resumen.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { FormsModule } from '@angular/forms';
     FormularioPagoComponent,
     TablaServicioComponent,
     TablaPagoComponent,
-    TablaResumenComponent
+    TablaResumenComponent,
+    ServicioComponent,
+    PagComponent,
+    ResumenComponent
   ],
   imports: [
     CommonModule,

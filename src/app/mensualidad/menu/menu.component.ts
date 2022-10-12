@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
     },
     {
       ruta: "tablaResumen",
-      texto: "Tabla para Servicio"
+      texto: "Tabla para Resumen"
     },
   ]
 

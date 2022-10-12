@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Servicio } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 
@@ -8,8 +8,8 @@ import { ServicioService } from 'src/app/services/servicio.service';
   styles: [
     `
     .demo-table {
-  width: 100%;
-}
+    width: 100%;
+} 
     
     `
 
@@ -20,6 +20,9 @@ export class TablaServicioComponent implements OnInit {
   public servicios!: Servicio[];
 
   public displayedColumns: string[] = ['servicio', 'url'];
+  public displayedColumnsSinUrl: string[] = ['servicio'];
+
+  @Input() mostrarEnlace: boolean = false;
 
   constructor(
     private servicioService: ServicioService

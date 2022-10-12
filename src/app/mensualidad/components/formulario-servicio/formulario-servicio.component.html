@@ -1,17 +1,39 @@
 <h1>Creacion de Servicios</h1>
-<form>
-    <div fxLayout="row">
-        <div fxLayoutGap="20px">
+<form #formServicio="ngForm" (ngSubmit)="cargarFormulario()">
+    <div fxLayout="row" fxLayoutGap="10">
+        <div>
             <mat-form-field appearance="legacy">
                 <mat-label>Nombre del Servicio ...</mat-label>
-                <input matInput placeholder="">
+                <input 
+                matInput 
+                placeholder=""
+                required
+                name="servicio"
+                ngModel
+                minlength="5"
+                >
                 </mat-form-field>
         </div>
-        <div fxLayout="col">
+        <div>
             <mat-form-field appearance="legacy">
                 <mat-label>Pagina web ...</mat-label>
-                <input matInput placeholder="">
+                <input
+                    matInput 
+                    placeholder="enlace"
+                    required
+                    name="url"
+                    ngModel
+                    minlength="3"
+                >
             </mat-form-field>
+        </div>
+        <div>
+            <button
+                mat-raised-button 
+                color="primary" 
+                type="submit"
+                [disabled]="formServicio.invalid"
+            >Cargar</button>
         </div>
     </div>
 </form>

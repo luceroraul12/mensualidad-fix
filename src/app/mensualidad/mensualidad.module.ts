@@ -12,6 +12,7 @@ import { TablaPagoComponent } from './components/tabla-pago/tabla-pago.component
 import { TablaResumenComponent } from './components/tabla-resumen/tabla-resumen.component';
 import { TablaServicioComponent } from './components/tabla-servicio/tabla-servicio.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +27,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+
+
     MensualidadRoutingModule,
     MaterialModule,
     SharedModule,

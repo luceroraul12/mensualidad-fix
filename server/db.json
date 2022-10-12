@@ -146,241 +146,201 @@
       "id": "65",
       "fechaPago": "5/5/2022",
       "pagoEfectuado": 2513.26,
-      "servicio": [
-        {
-          "id": "0",
-          "servicio": "Realcube",
-          "url": "http://dummyimage.com/120x100.png/dddddd/000000"
-        }
-      ]
+      "servicio": {
+        "id": "0",
+        "servicio": "Realcube",
+        "url": "http://dummyimage.com/120x100.png/dddddd/000000"
+      }
     },
     {
       "id": "8789",
       "fechaPago": "9/24/2022",
       "pagoEfectuado": 1097.91,
-      "servicio": [
-        {
-          "id": "4",
-          "servicio": "Skyba",
-          "url": "http://dummyimage.com/206x100.png/5fa2dd/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "4",
+        "servicio": "Skyba",
+        "url": "http://dummyimage.com/206x100.png/5fa2dd/ffffff"
+      }
     },
     {
       "id": "65047",
       "fechaPago": "8/22/2022",
       "pagoEfectuado": 9199.28,
-      "servicio": [
-        {
-          "id": "514",
-          "servicio": "Yadel",
-          "url": "http://dummyimage.com/229x100.png/cc0000/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "514",
+        "servicio": "Yadel",
+        "url": "http://dummyimage.com/229x100.png/cc0000/ffffff"
+      }
     },
     {
       "id": "30549",
       "fechaPago": "3/13/2022",
       "pagoEfectuado": 8316.12,
-      "servicio": [
-        {
-          "id": "5025",
-          "servicio": "Demimbu",
-          "url": "http://dummyimage.com/245x100.png/ff4444/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "5025",
+        "servicio": "Demimbu",
+        "url": "http://dummyimage.com/245x100.png/ff4444/ffffff"
+      }
     },
     {
       "id": "10",
       "fechaPago": "2/15/2022",
       "pagoEfectuado": 7748.65,
-      "servicio": [
-        {
-          "id": "2",
-          "servicio": "Chatterpoint",
-          "url": "http://dummyimage.com/187x100.png/ff4444/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "2",
+        "servicio": "Chatterpoint",
+        "url": "http://dummyimage.com/187x100.png/ff4444/ffffff"
+      }
     },
     {
       "id": "73",
       "fechaPago": "6/2/2022",
       "pagoEfectuado": 3820.07,
-      "servicio": [
-        {
-          "id": "5",
-          "servicio": "Realbuzz",
-          "url": "http://dummyimage.com/152x100.png/ff4444/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "5",
+        "servicio": "Realbuzz",
+        "url": "http://dummyimage.com/152x100.png/ff4444/ffffff"
+      }
     },
     {
       "id": "7",
       "fechaPago": "9/21/2022",
       "pagoEfectuado": 7420.59,
-      "servicio": [
-        {
-          "id": "0461",
-          "servicio": "Voolia",
-          "url": "http://dummyimage.com/204x100.png/cc0000/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "0461",
+        "servicio": "Voolia",
+        "url": "http://dummyimage.com/204x100.png/cc0000/ffffff"
+      }
     },
     {
       "id": "25",
       "fechaPago": "1/29/2022",
       "pagoEfectuado": 6998.43,
-      "servicio": [
-        {
-          "id": "1",
-          "servicio": "Skimia",
-          "url": "http://dummyimage.com/142x100.png/cc0000/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "1",
+        "servicio": "Skimia",
+        "url": "http://dummyimage.com/142x100.png/cc0000/ffffff"
+      }
     },
     {
       "id": "98936",
       "fechaPago": "12/27/2021",
       "pagoEfectuado": 7859.06,
-      "servicio": [
-        {
-          "id": "13838",
-          "servicio": "Jabberstorm",
-          "url": "http://dummyimage.com/133x100.png/cc0000/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "13838",
+        "servicio": "Jabberstorm",
+        "url": "http://dummyimage.com/133x100.png/cc0000/ffffff"
+      }
     },
     {
       "id": "6",
       "fechaPago": "2/10/2022",
       "pagoEfectuado": 6765.91,
-      "servicio": [
-        {
-          "id": "9791",
-          "servicio": "Twitterworks",
-          "url": "http://dummyimage.com/137x100.png/cc0000/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "9791",
+        "servicio": "Twitterworks",
+        "url": "http://dummyimage.com/137x100.png/cc0000/ffffff"
+      }
     },
     {
       "id": "63",
       "fechaPago": "11/8/2021",
       "pagoEfectuado": 8010.65,
-      "servicio": [
-        {
-          "id": "1652",
-          "servicio": "Oodoo",
-          "url": "http://dummyimage.com/132x100.png/dddddd/000000"
-        }
-      ]
+      "servicio": {
+        "id": "1652",
+        "servicio": "Oodoo",
+        "url": "http://dummyimage.com/132x100.png/dddddd/000000"
+      }
     },
     {
       "id": "41",
       "fechaPago": "7/9/2022",
       "pagoEfectuado": 6957.75,
-      "servicio": [
-        {
-          "id": "2489",
-          "servicio": "Meembee",
-          "url": "http://dummyimage.com/249x100.png/ff4444/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "2489",
+        "servicio": "Meembee",
+        "url": "http://dummyimage.com/249x100.png/ff4444/ffffff"
+      }
     },
     {
       "id": "1",
       "fechaPago": "12/19/2021",
       "pagoEfectuado": 7243.54,
-      "servicio": [
-        {
-          "id": "983",
-          "servicio": "Layo",
-          "url": "http://dummyimage.com/176x100.png/5fa2dd/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "983",
+        "servicio": "Layo",
+        "url": "http://dummyimage.com/176x100.png/5fa2dd/ffffff"
+      }
     },
     {
       "id": "708",
       "fechaPago": "4/24/2022",
       "pagoEfectuado": 1382.02,
-      "servicio": [
-        {
-          "id": "20903",
-          "servicio": "Thoughtbridge",
-          "url": "http://dummyimage.com/249x100.png/ff4444/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "20903",
+        "servicio": "Thoughtbridge",
+        "url": "http://dummyimage.com/249x100.png/ff4444/ffffff"
+      }
     },
     {
       "id": "013",
       "fechaPago": "1/11/2022",
       "pagoEfectuado": 7899.06,
-      "servicio": [
-        {
-          "id": "9973",
-          "servicio": "Photobug",
-          "url": "http://dummyimage.com/105x100.png/ff4444/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "9973",
+        "servicio": "Photobug",
+        "url": "http://dummyimage.com/105x100.png/ff4444/ffffff"
+      }
     },
     {
       "id": "8",
       "fechaPago": "5/3/2022",
       "pagoEfectuado": 4331.4,
-      "servicio": [
-        {
-          "id": "41808",
-          "servicio": "Rhynoodle",
-          "url": "http://dummyimage.com/146x100.png/cc0000/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "41808",
+        "servicio": "Rhynoodle",
+        "url": "http://dummyimage.com/146x100.png/cc0000/ffffff"
+      }
     },
     {
       "id": "52",
       "fechaPago": "4/23/2022",
       "pagoEfectuado": 2271.51,
-      "servicio": [
-        {
-          "id": "98",
-          "servicio": "Wordify",
-          "url": "http://dummyimage.com/221x100.png/5fa2dd/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "98",
+        "servicio": "Wordify",
+        "url": "http://dummyimage.com/221x100.png/5fa2dd/ffffff"
+      }
     },
     {
       "id": "8554",
       "fechaPago": "3/1/2022",
       "pagoEfectuado": 2813.15,
-      "servicio": [
-        {
-          "id": "058",
-          "servicio": "Youspan",
-          "url": "http://dummyimage.com/168x100.png/ff4444/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "058",
+        "servicio": "Youspan",
+        "url": "http://dummyimage.com/168x100.png/ff4444/ffffff"
+      }
     },
     {
       "id": "25",
       "fechaPago": "5/2/2022",
       "pagoEfectuado": 8291.28,
-      "servicio": [
-        {
-          "id": "035",
-          "servicio": "Zoomzone",
-          "url": "http://dummyimage.com/169x100.png/cc0000/ffffff"
-        }
-      ]
+      "servicio": {
+        "id": "035",
+        "servicio": "Zoomzone",
+        "url": "http://dummyimage.com/169x100.png/cc0000/ffffff"
+      }
     },
     {
       "id": "9767",
       "fechaPago": "1/30/2022",
       "pagoEfectuado": 8065.3,
-      "servicio": [
-        {
-          "id": "15153",
-          "servicio": "Skalith",
-          "url": "http://dummyimage.com/123x100.png/dddddd/000000"
-        }
-      ]
+      "servicio": {
+        "id": "15153",
+        "servicio": "Skalith",
+        "url": "http://dummyimage.com/123x100.png/dddddd/000000"
+      }
     }
   ]
 }

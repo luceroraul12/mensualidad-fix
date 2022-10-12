@@ -1,5 +1,5 @@
 export interface Servicio {
     id: number;
-    nombre: string;
+    servicio: string;
     url: string;
 }

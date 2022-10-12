@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Servicio {
-  nombre: string,
-  url: string,
-}
+import { Servicio } from 'src/app/interfaces/servicio.interface';
+import { ServicioService } from 'src/app/services/servicio.service';
 
 @Component({
   selector: 'app-tabla-servicio',
@@ -20,19 +17,18 @@ interface Servicio {
 })
 export class TablaServicioComponent implements OnInit {
 
-  public servicios: Servicio[]= [
-    {nombre:'movistar', url:'www.movistar.com'},
-    {nombre:'rovistar', url:'www.rovistar.com'},
-    {nombre:'ribeiro', url:'www.ribeiro.com'},
-    {nombre:'carrefour', url:'www.carrefour.com'},
-    {nombre:'supercanal', url:'www.supercanal.com'},
-  ]
+  public servicios!: Servicio[];
 
-  public displayedColumns: string[] = ['nombre', 'url'];
+  public displayedColumns: string[] = ['servicio', 'url'];
 
-  constructor() { }
+  constructor(
+    private servicioService: ServicioService
+  ) { }
 
   ngOnInit(): void {
+    this.servicioService.leer().subscribe(
+      serviciosDisponibles => this.servicios = serviciosDisponibles
+    )
   }
 
 }

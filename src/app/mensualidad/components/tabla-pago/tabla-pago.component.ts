@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-
-
-interface Pago {
-  servicio: string;
-  fechaPago: Date;
-  pagoRealizado: number;
-}
+import { Pago } from 'src/app/interfaces/pago.interface';
+import { PagoService } from 'src/app/services/pago.service';
 
 @Component({
   selector: 'app-tabla-pago',
@@ -21,20 +15,18 @@ interface Pago {
 })
 export class TablaPagoComponent implements OnInit {
 
-  public pagos: Pago[] = [
-    {servicio: 'movistar', pagoRealizado: 123345.35, fechaPago: new Date()},
-    {servicio: 'movistar', pagoRealizado: 123345.35, fechaPago: new Date()},
-    {servicio: 'movistar', pagoRealizado: 123345.35, fechaPago: new Date()},
-    {servicio: 'movistar', pagoRealizado: 123345.35, fechaPago: new Date()},
-    {servicio: 'movistar', pagoRealizado: 123345.35, fechaPago: new Date()},
-    {servicio: 'movistar', pagoRealizado: 123345.35, fechaPago: new Date()},
-  ];
+  public pagos!: Pago[];
 
-  public displayedColumns: string[] = ['servicio', 'fechaPago', 'pagoRealizado']
+  public displayedColumns: string[] = ['servicio', 'fechaPago', 'pagoEfectuado']
 
-  constructor() { }
+  constructor(
+    private pagoService: PagoService
+  ) { }
 
   ngOnInit(): void {
+    this.pagoService.leer().subscribe(
+      pagosCreados => this.pagos = pagosCreados
+    )
   }
 
 }

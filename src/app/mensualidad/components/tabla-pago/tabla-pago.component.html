@@ -2,7 +2,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="servicio">
         <th mat-header-cell *matHeaderCellDef> Servicio </th>
-        <td mat-cell *matCellDef="let element"> {{element.servicio}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.servicio.servicio}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -11,9 +11,9 @@
         <td mat-cell *matCellDef="let element"> {{element.fechaPago}} </td>
     </ng-container>
     <!-- Name Column -->
-    <ng-container matColumnDef="pagoRealizado">
+    <ng-container matColumnDef="pagoEfectuado">
         <th mat-header-cell *matHeaderCellDef> Enlace </th>
-        <td mat-cell *matCellDef="let element"> {{element.pagoRealizado}} </td>
+        <td mat-cell *matCellDef=" let element"> {{element.pagoEfectuado}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

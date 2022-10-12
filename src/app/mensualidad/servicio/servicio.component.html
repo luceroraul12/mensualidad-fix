@@ -1,8 +1,23 @@
 <div class="col">
-    <div class="row">
-        <app-formulario-servicio></app-formulario-servicio>
+    <div class="row my-3">
+        <mat-card>
+            <mat-card-title>
+                Formulario
+            </mat-card-title>
+            <mat-card-content>
+            <app-formulario-servicio></app-formulario-servicio>
+
+            </mat-card-content>
+        </mat-card>
     </div>
-    <div class="row">
-        <app-tabla-servicio></app-tabla-servicio>
+    <div class="row my-3">
+        <mat-card>
+            <mat-card-title>
+                Servicios Creados
+            </mat-card-title>
+            <mat-card-content>
+                <app-tabla-servicio [mostrarEnlace]="true"></app-tabla-servicio>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-formulario-resumen',
   templateUrl: './formulario-resumen.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class FormularioResumenComponent implements OnInit {
 

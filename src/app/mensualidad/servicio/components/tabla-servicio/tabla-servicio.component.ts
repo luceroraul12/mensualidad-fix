@@ -23,6 +23,7 @@ export class TablaServicioComponent implements OnInit {
   public displayedColumnsSinUrl: string[] = ['servicio'];
 
   @Input() mostrarEnlace: boolean = false;
+  @Input() tituloPersonalizado: string = "Servicio";
 
   constructor(
     private servicioService: ServicioService

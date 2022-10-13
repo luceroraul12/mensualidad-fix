@@ -1,1 +1,11 @@
-<p>botonera-tabla works!</p>
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center">
+    <button mat-mini-fab color="primary" *ngIf="puedeVer">
+        <mat-icon>visibility</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" *ngIf="puedeEditar">
+        <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-mini-fab color="primary" *ngIf="puedeEliminar">
+        <mat-icon>delete</mat-icon>
+    </button>
+</div>

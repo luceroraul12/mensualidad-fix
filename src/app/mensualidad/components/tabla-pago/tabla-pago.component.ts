@@ -17,7 +17,7 @@ export class TablaPagoComponent implements OnInit {
 
   public pagos!: Pago[];
 
-  public displayedColumns: string[] = ['servicio', 'fechaPago', 'pagoEfectuado']
+  public displayedColumns: string[] = ['servicio', 'fechaPago', 'pagoEfectuado', 'acciones']
 
   constructor(
     private pagoService: PagoService

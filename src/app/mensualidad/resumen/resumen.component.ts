@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComunicadorService } from 'src/app/services/comunicador.service';
 
 @Component({
   selector: 'app-resumen',
@@ -8,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResumenComponent implements OnInit {
 
-  constructor() { }
+  public fechaElegida: Date = new Date(Date.now());
+
+  constructor(
+    private comunicadorService: ComunicadorService
+  ) { }
 
   ngOnInit(): void {
+    this.comunicadorService.fechaResumen$.subscribe(
+      fecha => this.fechaElegida = fecha
+    )
   }
 
 }

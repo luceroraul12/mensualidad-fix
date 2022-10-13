@@ -12,7 +12,7 @@
     <div class="row my-3">
         <mat-card>
             <mat-card-title>
-                Resumen del mes :::::::::
+                Resumen del mes {{ fechaElegida | date: 'MM/YYYY'}}
             </mat-card-title>
             <mat-card-content>
                 <app-tabla-resumen></app-tabla-resumen>

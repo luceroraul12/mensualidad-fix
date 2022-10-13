@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ComunicadorService } from 'src/app/services/comunicador.service';
 
 @Component({
   selector: 'app-formulario-resumen',
@@ -7,13 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioResumenComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('formResumen') formulario!: NgForm;
+
+  constructor(
+    private comunicadorService: ComunicadorService
+  ) { }
 
   ngOnInit(): void {
   }
 
   cargar(): void {
-    
+    this.comunicadorService.fechaResumen$.next(
+      this.formulario.controls['fechaPago'].value
+    )
   }
 
 }

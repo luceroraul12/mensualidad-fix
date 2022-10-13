@@ -28,5 +28,4 @@ export class TablaPagoComponent implements OnInit {
       pagosCreados => this.pagos = pagosCreados
     )
   }
-
 }

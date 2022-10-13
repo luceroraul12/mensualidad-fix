@@ -19,7 +19,7 @@ export class TablaServicioComponent implements OnInit {
 
   public servicios!: Servicio[];
 
-  public displayedColumns: string[] = ['servicio', 'url'];
+  public displayedColumns: string[] = ['servicio', 'url','acciones'];
   public displayedColumnsSinUrl: string[] = ['servicio'];
 
   @Input() mostrarEnlace: boolean = false;

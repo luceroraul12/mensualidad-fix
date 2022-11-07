@@ -16,7 +16,9 @@ export abstract class CrudService<Entidad>{
   ) { }
 
   agregar(elemento: Entidad): Observable<Entidad>{
-    return this.http.post<Entidad>(`${this.url}/${this.rutaEspecifica}/crear`, {body: elemento});
+    console.log(elemento);
+    
+    return this.http.post<Entidad>(`${this.url}/${this.rutaEspecifica}/crear`, elemento);
   }
   modificar(elemento: Entidad): Observable<Entidad>{
     return this.http.put<Entidad>(`${this.url}/${this.rutaEspecifica}/modificar`, {body: elemento});

@@ -35,4 +35,11 @@ export class TablaServicioComponent implements OnInit {
     )
   }
 
+  eliminar(factura: Servicio){
+    this.servicioService.eliminar(factura).subscribe(
+      respuesta => console.log("servicio eliminado")
+      
+    )
+  }
+
 }

@@ -13,6 +13,11 @@ export class FormularioServicioComponent implements OnInit {
 
   @ViewChild('formServicio') formServicio!: NgForm;
 
+  public facturaParaCrear: Factura = {
+    nombre: '',
+    url: ''
+  }
+
   constructor(
     private servicioService: ServicioService
   ) { }
@@ -21,19 +26,13 @@ export class FormularioServicioComponent implements OnInit {
   }
 
   cargarFormulario(): void {
-    console.log(this.formServicio.value);
-    this.formServicio.resetForm();
-
-    let nombreServicio, urlServicio: string;
-    nombreServicio = this.formServicio.controls['servicio'].value;
-    urlServicio = this.formServicio.controls['url'].value;
-    let servicio: Factura = {
-      nombre: nombreServicio,
-      url: urlServicio
-    }
-    this.servicioService.agregar(servicio).subscribe(
+    console.log("servicio a registrar",this.facturaParaCrear);
+    
+    this.servicioService.agregar(this.facturaParaCrear).subscribe(
       respuesta => {
-        console.log('servicio registrado');
+        console.log('servicio registrado', respuesta);
+        this.formServicio.resetForm();
+
       }
     )
   }

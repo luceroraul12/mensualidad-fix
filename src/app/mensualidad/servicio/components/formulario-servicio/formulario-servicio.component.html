@@ -8,7 +8,7 @@
                 placeholder=""
                 required
                 name="servicio"
-                ngModel
+                [(ngModel)]="facturaParaCrear.nombre"
                 minlength="5"
                 >
                 </mat-form-field>
@@ -21,7 +21,7 @@
                     placeholder="enlace"
                     required
                     name="url"
-                    ngModel
+                    [(ngModel)]="facturaParaCrear.url"
                     minlength="3"
                 >
             </mat-form-field>
@@ -36,3 +36,7 @@
         </div>
     </div>
 </form>
+
+<pre>
+    {{facturaParaCrear | json}}
+</pre>

@@ -9,7 +9,7 @@ import { CrudService } from './crud.service';
   providedIn: 'root'
 })
 export class ServicioService extends CrudService<Servicio> {
-  public rutaEspecifica: string = "servicios";
+  public rutaEspecifica: string = "facturas";
 
 
 }

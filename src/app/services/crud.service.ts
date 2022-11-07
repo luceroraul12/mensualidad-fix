@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,13 +16,13 @@ export abstract class CrudService<Entidad>{
   ) { }
 
   agregar(elemento: Entidad): Observable<Entidad>{
-    return this.http.post<Entidad>(`${this.url}/${this.rutaEspecifica}/crear`, elemento);
+    return this.http.post<Entidad>(`${this.url}/${this.rutaEspecifica}/crear`, {body: elemento});
   }
   modificar(elemento: Entidad): Observable<Entidad>{
-    return this.http.put<Entidad>(`${this.url}/${this.rutaEspecifica}/modificar`, elemento);
+    return this.http.put<Entidad>(`${this.url}/${this.rutaEspecifica}/modificar`, {body: elemento});
   }
   eliminar(elemento: Entidad): Observable<boolean>{
-    return this.http.delete<boolean>(`${this.url}/${this.rutaEspecifica}/eliminar`);
+    return this.http.delete<boolean>(`${this.url}/${this.rutaEspecifica}/eliminar`, {body: elemento});
   }
   leer(): Observable<Entidad[]>{
     return this.http.get<Entidad[]>(`${this.url}/${this.rutaEspecifica}/leer`);

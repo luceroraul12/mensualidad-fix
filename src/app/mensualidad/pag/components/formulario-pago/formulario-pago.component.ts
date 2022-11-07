@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
-import { Servicio } from 'src/app/interfaces/servicio.interface';
+import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 
 
@@ -14,7 +14,7 @@ import { ServicioService } from 'src/app/services/servicio.service';
 })
 export class FormularioPagoComponent implements OnInit {
 
-  public serviciosDisponibles!: Servicio[];
+  public serviciosDisponibles!: Factura[];
 
   @ViewChild("formPago") formPago!: NgForm;
 
@@ -25,7 +25,7 @@ export class FormularioPagoComponent implements OnInit {
 
   ngOnInit(): void {
     this.servicioService.leer().subscribe(
-      (servicios: Servicio[]) => this.serviciosDisponibles = servicios
+      (servicios: Factura[]) => this.serviciosDisponibles = servicios
     )
   }
 

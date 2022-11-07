@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Servicio } from 'src/app/interfaces/servicio.interface';
+import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { ServicioService } from 'src/app/services/servicio.service';
 })
 export class TablaServicioComponent implements OnInit {
 
-  public servicios!: Servicio[];
+  public servicios!: Factura[];
 
   public displayedColumns: string[] = ['servicio', 'url','acciones'];
   public displayedColumnsSinUrl: string[] = ['servicio'];
@@ -35,7 +35,7 @@ export class TablaServicioComponent implements OnInit {
     )
   }
 
-  eliminar(factura: Servicio){
+  eliminar(factura: Factura){
     this.servicioService.eliminar(factura).subscribe(
       respuesta => console.log("servicio eliminado")
       

@@ -1,4 +1,4 @@
-export interface Servicio {
+export interface Factura {
     id?: number;
     nombre: string;
     url: string;

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Servicio } from 'src/app/interfaces/servicio.interface';
+import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class FormularioServicioComponent implements OnInit {
     let nombreServicio, urlServicio: string;
     nombreServicio = this.formServicio.controls['servicio'].value;
     urlServicio = this.formServicio.controls['url'].value;
-    let servicio: Servicio = {
+    let servicio: Factura = {
       nombre: nombreServicio,
       url: urlServicio
     }

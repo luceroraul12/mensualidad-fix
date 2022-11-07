@@ -1,8 +1,8 @@
-import { Servicio } from "./servicio.interface";
+import { Factura } from "./servicio.interface";
 
 export interface Pago {
     id: number;
     fechaPago: Date;
-    pagoEfectuado: number;
-    servicio: Servicio;
+    pago: number;
+    factura: Factura;
 }

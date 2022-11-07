@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ModeloGenerico } from 'src/app/interfaces/modelo.geneirco.interface';
 
 @Component({
   selector: 'app-botonera-tabla',

@@ -19,26 +19,23 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 })
 export class TablaServicioComponent implements OnInit {
 
-  public servicios: Factura[] = [];
 
   public displayedColumns: string[] = ['servicio', 'url','acciones'];
   public displayedColumnsSinUrl: string[] = ['servicio'];
 
   @Input() mostrarEnlace: boolean = false;
   @Input() tituloPersonalizado: string = "Servicio";
+  @Input() servicios: Factura[] = [];
+
 
   constructor(
     // TODO: ver como arreglar lo de tablaService por que no no me deja hacer las operaciones de la tabla desde el service y no desde el componente
-    private servicioService: ServicioService,
-    private tablaService: TablaServiceService<Factura>
+    private tablaService: TablaServiceService<Factura>,
+    private servicioService: ServicioService
   ) { }
 
   ngOnInit(): void {
-    this.servicioService.leer().subscribe(
-      serviciosDisponibles => {
-        this.servicios = serviciosDisponibles;
-      }
-    );
+    
     this.tablaService.comunicadorFormularioTabla$.subscribe(
       ({actividad, elemento}) => {
         if(actividad == Actividad.CREAR){

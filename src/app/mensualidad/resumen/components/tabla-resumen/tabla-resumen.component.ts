@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
-import { PagoService } from 'src/app/services/pago.service';
-import { ServicioService } from 'src/app/services/servicio.service';
+import { ResumenService } from 'src/app/services/resumen.service';
 
 @Component({
   selector: 'app-tabla-resumen',
@@ -21,8 +20,7 @@ export class TablaResumenComponent implements OnInit {
 
   constructor(
     private comunicadorService: ComunicadorService,
-    private facturaService: ServicioService,
-    private pagoService: PagoService
+    private resumenService: ResumenService
   ) { }
 
   ngOnInit(): void {
@@ -30,11 +28,11 @@ export class TablaResumenComponent implements OnInit {
     this.comunicadorService.fechaResumen$.subscribe(
       fecha => this.fechaElegida = fecha
     )
-    this.pagoService.obtenerResumen(this.fechaElegida.getMonth()+1,this.fechaElegida.getFullYear()).subscribe(
-      pagosRealizados => {
+    this.resumenService.obtenerResumenMesAnio(this.fechaElegida.getMonth()+1,this.fechaElegida.getFullYear()).subscribe(
+      ({facturasImpagas,facturasPagadas,pagosRealizados}) => {
+        this.facturasPagadas = facturasPagadas;
+        this.facturasSinPagar = facturasImpagas;
         this.pagosRealizados = pagosRealizados;
-        console.log(pagosRealizados);
-        
       }
     )
   }

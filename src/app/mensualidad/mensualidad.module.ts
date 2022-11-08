@@ -17,6 +17,7 @@ import { FormularioResumenComponent } from './resumen/components/formulario-resu
 import { FormularioPagoComponent } from './pag/components/formulario-pago/formulario-pago.component';
 import { TablaResumenComponent } from './resumen/components/tabla-resumen/tabla-resumen.component';
 import { FormularioServicioComponent } from './servicio/components/formulario-servicio/formulario-servicio.component';
+import { ResumenDialogPagoComponent } from './resumen/components/resumen-dialog-pago/resumen-dialog-pago.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FormularioServicioComponent } from './servicio/components/formulario-se
     ServicioComponent,
     PagComponent,
     ResumenComponent,
-    FormularioResumenComponent
+    FormularioResumenComponent,
+    ResumenDialogPagoComponent
   ],
   imports: [
     CommonModule,

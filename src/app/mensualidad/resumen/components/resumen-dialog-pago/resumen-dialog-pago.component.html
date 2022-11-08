@@ -2,3 +2,7 @@
 <pre>
 {{facturaSeleccionada | json}} 
 </pre>
+
+<app-formulario-pago
+[usaFacturasPersonalizadas]="true"
+[serviciosDisponibles]="[facturaSeleccionada]"></app-formulario-pago>

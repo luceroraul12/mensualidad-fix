@@ -16,6 +16,11 @@ export class ResumenDialogPagoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
+  }
+
+  cargarFactura(): Factura[]{
+    return [this.facturaSeleccionada];
   }
 
 

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 
 @Component({
@@ -8,9 +9,11 @@ import { Factura } from 'src/app/interfaces/servicio.interface';
 })
 export class ResumenDialogPagoComponent implements OnInit {
 
-  @Input() facturaSeleccionada!: Factura;
 
-  constructor() { }
+  constructor(
+    private dialogRef: MatDialogRef<ResumenDialogPagoComponent>,
+    @Inject(MAT_DIALOG_DATA) public facturaSeleccionada: Factura 
+  ) { }
 
   ngOnInit(): void {
   }

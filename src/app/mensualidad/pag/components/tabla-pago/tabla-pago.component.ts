@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { outputAst } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { PagoService } from 'src/app/services/pago.service';
@@ -18,6 +19,7 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 export class TablaPagoComponent implements OnInit {
 
   @Input() pagos!: Pago[];
+  @Output() eliminarPagoEspecifico: EventEmitter<Pago> = new EventEmitter();
 
   public displayedColumns: string[] = ['factura', 'fechaPago', 'pagoEfectuado', 'acciones']
 
@@ -51,6 +53,6 @@ export class TablaPagoComponent implements OnInit {
         });
       }
       );
-    
+    this.eliminarPagoEspecifico.emit(pago);
   }
 }

@@ -10,6 +10,6 @@ fxLayoutAlign="center start">
     </div>
     <div  fxFlex="10 1 auto">
         <app-tabla-pago
-        [pagos]="pagosRealizados"></app-tabla-pago>
+        [pagos]="pagosRealizados" (eliminarPagoEspecifico)="recuperarPagoEliminado($event)"></app-tabla-pago>
     </div>
 </div>

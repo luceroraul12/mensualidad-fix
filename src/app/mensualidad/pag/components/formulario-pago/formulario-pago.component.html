@@ -3,16 +3,31 @@
         <div>
             <mat-form-field appearance="fill">
                 <mat-label>Servicios Disponibles</mat-label>
-                <mat-select
+                <div *ngIf="!usaFacturasPersonalizadas; else personalizado">
+                    <mat-select
                     required
                     ngModel
                     name="servicio"
-                >
+                    >
                     <mat-option
                         *ngFor="let item of serviciosDisponibles"
                         [value]="item"
                     > {{item.nombre}} </mat-option>
-                </mat-select>
+                    </mat-select>
+                </div>
+                <ng-template #personalizado>
+                    <mat-select
+                    disabled="true"
+                    required
+                    [(ngModel)]="serviciosDisponibles[0]"
+                    name="servicio"
+                    >
+                    <mat-option
+                        *ngFor="let item of serviciosDisponibles"
+                        [value]="item"
+                    > {{item.nombre}} </mat-option>
+                    </mat-select>
+                </ng-template>
             </mat-form-field>
         </div>
         <div>

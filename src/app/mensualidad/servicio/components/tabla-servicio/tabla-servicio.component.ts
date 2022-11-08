@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
@@ -24,8 +24,11 @@ export class TablaServicioComponent implements OnInit {
   public displayedColumnsSinUrl: string[] = ['servicio'];
 
   @Input() mostrarEnlace: boolean = false;
+  @Input() esRenglonClick: boolean = false;
   @Input() tituloPersonalizado: string = "Servicio";
   @Input() servicios: Factura[] = [];
+
+  @Output() renglonClickeado: EventEmitter<Factura> = new EventEmitter();
 
 
   constructor(
@@ -63,6 +66,13 @@ export class TablaServicioComponent implements OnInit {
       }
       );
     
+  }
+
+  clickearRenglon(factura: Factura):void {
+    if(this.esRenglonClick){
+      this.renglonClickeado.emit(factura);
+    console.log('clickeado', factura);
+    }
   }
 
 }

@@ -22,12 +22,19 @@
 
     <div *ngIf="mostrarEnlace else sinEnlace">
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr 
+        mat-row 
+        (click)="clickearRenglon(row)"
+        *matRowDef="let row; columns: displayedColumns;"></tr>
     </div>
 
     <ng-template #sinEnlace>
         <tr mat-header-row *matHeaderRowDef="displayedColumnsSinUrl"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumnsSinUrl;"></tr>
+        <tr 
+        mat-row 
+        (click)="clickearRenglon(row)"
+        *matRowDef="let row; columns: displayedColumnsSinUrl;"></tr>
     </ng-template>
+
     
 </table>

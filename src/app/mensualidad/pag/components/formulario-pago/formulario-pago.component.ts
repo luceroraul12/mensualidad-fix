@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
@@ -18,7 +18,8 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 })
 export class FormularioPagoComponent implements OnInit {
 
-  public serviciosDisponibles!: Factura[];
+  @Input() serviciosDisponibles!: Factura[];
+  @Input() usaFacturasPersonalizadas: boolean = false;
 
   @ViewChild("formPago") formPago!: NgForm;
 
@@ -30,9 +31,11 @@ export class FormularioPagoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.servicioService.leer().subscribe(
-      (servicios: Factura[]) => this.serviciosDisponibles = servicios
-    )
+    if(!this.usaFacturasPersonalizadas){
+      this.servicioService.leer().subscribe(
+        (servicios: Factura[]) => this.serviciosDisponibles = servicios
+      )
+    }
   }
 
 

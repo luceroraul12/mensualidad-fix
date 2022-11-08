@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
+import { TablaServiceService } from 'src/app/services/tabla-service.service';
 
 @Component({
   selector: 'app-formulario-servicio',
@@ -19,7 +21,8 @@ export class FormularioServicioComponent implements OnInit {
   }
 
   constructor(
-    private servicioService: ServicioService
+    private servicioService: ServicioService,
+    private tablaService: TablaServiceService<Factura>
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +35,10 @@ export class FormularioServicioComponent implements OnInit {
       respuesta => {
         console.log('servicio registrado', respuesta);
         this.formServicio.resetForm();
-
+        this.tablaService.comunicadorFormularioTabla$.next({
+          actividad: Actividad.CREAR,
+          elemento: respuesta
+        });
       }
     )
   }

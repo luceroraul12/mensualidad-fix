@@ -48,7 +48,8 @@ export class TablaServicioComponent implements OnInit {
           console.log("es para quitar");
           this.servicios = this.servicios.filter(({id}) => id != elemento.id);
         }
-      }
+      },
+      (err) => alert('Imposible de borrar, pagos realizados')
     );
   }
 

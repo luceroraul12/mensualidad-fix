@@ -9,6 +9,7 @@ fxLayoutAlign="center center">
         <app-tabla-servicio tituloPersonalizado="Servicios Impagos"></app-tabla-servicio>
     </div>
     <div  fxFlex="10 1 auto">
-        <app-tabla-pago></app-tabla-pago>
+        <app-tabla-pago
+        [pagos]="pagosRealizados"></app-tabla-pago>
     </div>
 </div>

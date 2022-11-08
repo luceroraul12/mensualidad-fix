@@ -37,4 +37,10 @@ export class TablaResumenComponent implements OnInit {
     )
   }
 
+  recuperarPagoEliminado(pago: Pago):void{
+    console.log(pago);
+    this.facturasPagadas = this.resumenService.verificarExistenciaFacturaAgregar(pago, this.facturasPagadas);
+    this.facturasSinPagar = this.resumenService.verificarExistenciaFacturaAgregar(pago, this.facturasSinPagar);
+  }
+
 }

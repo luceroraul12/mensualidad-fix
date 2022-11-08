@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
 import { ResumenService } from 'src/app/services/resumen.service';
+import { ResumenDialogPagoComponent } from '../resumen-dialog-pago/resumen-dialog-pago.component';
 
 @Component({
   selector: 'app-tabla-resumen',
@@ -20,7 +22,8 @@ export class TablaResumenComponent implements OnInit {
 
   constructor(
     private comunicadorService: ComunicadorService,
-    private resumenService: ResumenService
+    private resumenService: ResumenService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +44,10 @@ export class TablaResumenComponent implements OnInit {
     console.log(pago);
     this.facturasPagadas = this.resumenService.verificarExistenciaFacturaAgregar(pago, this.facturasPagadas);
     this.facturasSinPagar = this.resumenService.verificarExistenciaFacturaAgregar(pago, this.facturasSinPagar);
+  }
+
+  abrirFromularioPago(facturaSeleccionada: Factura): void {
+    this.dialog.open(ResumenDialogPagoComponent,{data: facturaSeleccionada})
   }
 
 }

@@ -3,10 +3,10 @@ fxLayout="row"
 fxLayoutGap="10px" 
 fxLayoutAlign="center center">
     <div  fxFlex="1 1 auto">
-        <app-tabla-servicio tituloPersonalizado="Servicios Pagados"></app-tabla-servicio>
+        <app-tabla-servicio tituloPersonalizado="Servicios Pagados" [servicios]="facturasPagadas"></app-tabla-servicio>
     </div>
     <div  fxFlex="1 1 auto">
-        <app-tabla-servicio tituloPersonalizado="Servicios Impagos"></app-tabla-servicio>
+        <app-tabla-servicio tituloPersonalizado="Servicios Impagos" [servicios]="facturasSinPagar"></app-tabla-servicio>
     </div>
     <div  fxFlex="10 1 auto">
         <app-tabla-pago

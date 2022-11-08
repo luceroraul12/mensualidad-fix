@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { PagoService } from 'src/app/services/pago.service';
@@ -17,7 +17,7 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 })
 export class TablaPagoComponent implements OnInit {
 
-  public pagos!: Pago[];
+  @Input() pagos!: Pago[];
 
   public displayedColumns: string[] = ['factura', 'fechaPago', 'pagoEfectuado', 'acciones']
 
@@ -27,9 +27,6 @@ export class TablaPagoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.pagoService.leer().subscribe(
-      pagosCreados => this.pagos = pagosCreados
-    );
     this.tablaService.comunicadorFormularioTabla$.subscribe(
       ({actividad, elemento}) => {
         if(actividad == Actividad.CREAR){

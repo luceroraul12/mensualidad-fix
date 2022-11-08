@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pago } from 'src/app/interfaces/pago.interface';
+import { PagoService } from 'src/app/services/pago.service';
 
 @Component({
   selector: 'app-pago',
@@ -8,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagComponent implements OnInit {
 
-  constructor() { }
+  public pagos!: Pago[];
+
+  constructor(
+    private pagoService: PagoService
+  ) { }
 
   ngOnInit(): void {
+    this.pagoService.leer().subscribe(
+      pagosCreados => this.pagos = pagosCreados
+    );
   }
 
 }

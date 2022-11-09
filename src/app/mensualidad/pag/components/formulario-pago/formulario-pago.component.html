@@ -6,7 +6,7 @@
                 <div *ngIf="!usaFacturasPersonalizadas; else personalizado">
                     <mat-select
                     required
-                    ngModel
+                    [(ngModel)]="pagoCreado.factura"
                     name="servicio"
                     >
                     <mat-option
@@ -17,7 +17,6 @@
                 </div>
                 <ng-template #personalizado>
                     <mat-select
-                    disabled="true"
                     required
                     [(ngModel)]="serviciosDisponibles[0]"
                     name="servicio"
@@ -39,7 +38,7 @@
                     placeholder="monto"
                     required
                     name="pago"
-                    ngModel
+                    [(ngModel)]="pagoCreado.pago"
                 >
             </mat-form-field>
         </div>
@@ -49,10 +48,10 @@
                 <input
                     matInput 
                     [matDatepicker]="picker"
-                    ngModel
+                    [(ngModel)]="pagoCreado.fechaDePago"
                     name="fechaPago"
                     required
-                >
+                    >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>

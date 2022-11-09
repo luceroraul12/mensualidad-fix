@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
@@ -23,6 +23,10 @@ export class FormularioPagoComponent implements OnInit {
 
   @ViewChild("formPago") formPago!: NgForm;
 
+  public pagoCreado!: Pago;
+
+  public hoy = new FormControl(new Date());
+
   constructor(
     private servicioService: ServicioService,
     private pagoService: PagoService,
@@ -35,25 +39,34 @@ export class FormularioPagoComponent implements OnInit {
       this.servicioService.leer().subscribe(
         (servicios: Factura[]) => this.serviciosDisponibles = servicios
       )
-    }
+    };
+    this.pagoCreado = {
+      factura: {
+        nombre: '',
+        url: ''
+      },
+      fechaDePago: new Date(),
+    };
+    this.resetear();
   }
 
 
   cargarFormulario(): void {
     console.log(this.formPago.value);
-    let pago: Pago = {
-      factura: this.formPago.controls['servicio'].value,
-      pago: this.formPago.controls['pago'].value,
-      fechaDePago: this.formPago.controls['fechaPago'].value
-    }
+    this.pagoCreado.factura = this.formPago.controls['servicio'].value;
 
-    this.pagoService.agregar(pago).subscribe( respuesta => {
+    this.pagoService.agregar(this.pagoCreado).subscribe( respuesta => {
       this.tablaService.comunicadorFormularioTabla$.next({
         actividad: Actividad.CREAR,
         elemento: respuesta
-      })
+      });
+      this.resetear();
     });
     
+  }
+
+  resetear():void {
     this.formPago.resetForm();
+    this.pagoCreado.fechaDePago = new Date();
   }
 }

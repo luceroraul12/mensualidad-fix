@@ -4,6 +4,7 @@ import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
+import { ComunicadorService } from 'src/app/services/comunicador.service';
 import { PagoService } from 'src/app/services/pago.service';
 import { ServicioService } from 'src/app/services/servicio.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
@@ -23,14 +24,15 @@ export class FormularioPagoComponent implements OnInit {
 
   @ViewChild("formPago") formPago!: NgForm;
 
-  public pagoCreado!: Pago;
 
-  public hoy = new FormControl(new Date());
+  public fechaEmitida: Date = new Date();
+  public pagoCreado!: Pago;
 
   constructor(
     private servicioService: ServicioService,
     private pagoService: PagoService,
-    private tablaService: TablaServiceService<Pago>
+    private tablaService: TablaServiceService<Pago>,
+    private comunicadorService: ComunicadorService
 
   ) { }
 
@@ -40,13 +42,9 @@ export class FormularioPagoComponent implements OnInit {
         (servicios: Factura[]) => this.serviciosDisponibles = servicios
       )
     };
-    this.pagoCreado = {
-      factura: {
-        nombre: '',
-        url: ''
-      },
-      fechaDePago: new Date(),
-    };
+    this.comunicadorService.fechaResumen$.subscribe(
+      fecha => this.fechaEmitida = fecha
+    )
     this.resetear();
   }
 
@@ -66,7 +64,17 @@ export class FormularioPagoComponent implements OnInit {
   }
 
   resetear():void {
-    this.formPago.resetForm();
-    this.pagoCreado.fechaDePago = new Date();
+    this.pagoCreado = {
+      factura: {
+        nombre: '',
+        url: ''
+      },
+      fechaDePago: this.fechaEmitida,
+    };
+
+    let valores = {
+      fechaPago: this.fechaEmitida
+    }
+    // this.formPago.resetForm(valores);
   }
 }

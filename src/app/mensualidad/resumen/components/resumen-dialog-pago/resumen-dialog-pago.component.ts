@@ -19,9 +19,5 @@ export class ResumenDialogPagoComponent implements OnInit {
     
   }
 
-  cargarFactura(): Factura[]{
-    return [this.facturaSeleccionada];
-  }
-
 
 }

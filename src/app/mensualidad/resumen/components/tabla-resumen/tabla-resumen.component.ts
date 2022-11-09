@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { first } from 'rxjs';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
@@ -32,15 +33,12 @@ export class TablaResumenComponent implements OnInit {
   ngOnInit(): void {
     this.fechaElegida = new Date(Date.now());
     this.comunicadorService.fechaResumen$.subscribe(
-      fecha => this.fechaElegida = fecha
-    )
-    this.resumenService.obtenerResumenMesAnio(this.fechaElegida.getMonth()+1,this.fechaElegida.getFullYear()).subscribe(
-      ({facturasImpagas,facturasPagadas,pagosRealizados}) => {
-        this.facturasPagadas = facturasPagadas;
-        this.facturasSinPagar = facturasImpagas;
-        this.pagosRealizados = pagosRealizados;
+      fecha => {
+        this.fechaElegida = fecha;
+        this.traerTodosLosPagosDelBackend();
       }
     )
+    this.traerTodosLosPagosDelBackend();
     this.tablaService.comunicadorFormularioTabla$.subscribe(
       ({elemento}) => {
         this.recuperarFacturaPagada(elemento);
@@ -57,5 +55,17 @@ export class TablaResumenComponent implements OnInit {
   abrirFromularioPago(facturaSeleccionada: Factura): void {
     this.dialog.open(ResumenDialogPagoComponent,{data: facturaSeleccionada})
   }
-
+  traerTodosLosPagosDelBackend():void  {
+    this.resumenService.obtenerResumenMesAnio(this.fechaElegida.getMonth()+1,this.fechaElegida.getFullYear())
+    .pipe(first())
+    .subscribe(
+      ({facturasImpagas,facturasPagadas,pagosRealizados}) => {
+        this.facturasPagadas = facturasPagadas;
+        this.facturasSinPagar = facturasImpagas;
+        this.pagosRealizados = pagosRealizados;
+      }
+    )
+  }
 }
+
+

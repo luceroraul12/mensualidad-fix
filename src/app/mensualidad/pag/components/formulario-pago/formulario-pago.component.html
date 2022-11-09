@@ -61,7 +61,7 @@
                 mat-raised-button 
                 color="primary" 
                 type="submit"
-                [disabled]="formPago.invalid && formPago.untouched"
+                [disabled]="formPago.invalid || formPago.untouched"
             >Cargar</button>
         </div>
     </div>

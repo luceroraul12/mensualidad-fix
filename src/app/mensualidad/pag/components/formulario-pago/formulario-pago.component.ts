@@ -45,7 +45,14 @@ export class FormularioPagoComponent implements OnInit {
     this.comunicadorService.fechaResumen$.subscribe(
       fecha => this.fechaEmitida = fecha
     )
-    this.resetear();
+    this.pagoCreado = {
+      factura: {
+        nombre: '',
+        url: ''
+      },
+      fechaDePago: this.fechaEmitida,
+    };
+    // this.resetear();
   }
 
 
@@ -72,9 +79,6 @@ export class FormularioPagoComponent implements OnInit {
       fechaDePago: this.fechaEmitida,
     };
 
-    let valores = {
-      fechaPago: this.fechaEmitida
-    }
-    // this.formPago.resetForm(valores);
+    // this.formPago.resetForm(this.pagoCreado);
   }
 }

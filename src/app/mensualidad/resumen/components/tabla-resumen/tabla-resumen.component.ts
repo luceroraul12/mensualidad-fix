@@ -38,7 +38,6 @@ export class TablaResumenComponent implements OnInit {
         this.traerTodosLosPagosDelBackend();
       }
     )
-    this.traerTodosLosPagosDelBackend();
     this.tablaService.comunicadorFormularioTabla$.subscribe(
       ({elemento}) => {
         this.recuperarFacturaPagada(elemento);

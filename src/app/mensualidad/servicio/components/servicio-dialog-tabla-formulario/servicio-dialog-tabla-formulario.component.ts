@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Factura } from 'src/app/interfaces/servicio.interface';
 
 @Component({
   selector: 'app-servicio-dialog-tabla-formulario',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicioDialogTablaFormularioComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<ServicioDialogTablaFormularioComponent>,
+    @Inject(MAT_DIALOG_DATA) public factura: Factura
+  ) { }
 
   ngOnInit(): void {
   }

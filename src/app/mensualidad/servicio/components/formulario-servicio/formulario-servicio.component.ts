@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
@@ -11,13 +12,14 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
   styles: [
   ]
 })
-export class FormularioServicioComponent implements OnInit {
+export class FormularioServicioComponent implements OnInit, OnDestroy {
+  private subscription!: Subscription;
 
   @ViewChild('formServicio') formServicio!: NgForm;
   @Input() esParaModificar: boolean = false;
   @Input() facturaModificable!: Factura;
 
-  public facturaParaCrear: Factura = {
+  @Input() factura: Factura = {
     nombre: '',
     url: ''
   }
@@ -27,14 +29,18 @@ export class FormularioServicioComponent implements OnInit {
     private tablaService: TablaServiceService<Factura>
   ) { }
 
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   ngOnInit(): void {
   }
 
   cargarFormulario(): void {
     if(!this.esParaModificar){
-      this.servicioService.agregar(this.facturaParaCrear).subscribe(
+      this.subscription = this.servicioService.agregar(this.factura).subscribe(
         respuesta => {
-          console.log('servicio registrado', respuesta);
           this.formServicio.resetForm();
           this.tablaService.comunicadorFormularioTabla$.next({
             actividad: Actividad.CREAR,
@@ -43,9 +49,8 @@ export class FormularioServicioComponent implements OnInit {
         }
       )
     } else {
-      this.servicioService.modificar(this.facturaParaCrear).subscribe(
+      this.subscription = this.servicioService.modificar(this.factura).subscribe(
         respuesta => {
-          console.log('servicio modificado', respuesta);
           this.formServicio.resetForm();
           this.tablaService.comunicadorFormularioTabla$.next({
             actividad: Actividad.MODIFICAR,
@@ -54,7 +59,12 @@ export class FormularioServicioComponent implements OnInit {
         }
       )
     }
-    
+    this.resetear();
   }
-
+  resetear(){
+    this.factura = {
+      nombre: '',
+      url: '',
+    }
+  }
 }

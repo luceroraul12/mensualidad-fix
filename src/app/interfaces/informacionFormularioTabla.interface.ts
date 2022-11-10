@@ -4,5 +4,5 @@ export interface InformacionFormularioTabla<Entidad>{
 }
 
 export enum Actividad {
-    CREAR, ELIMINAR
+    CREAR, ELIMINAR, MODIFICAR
 }

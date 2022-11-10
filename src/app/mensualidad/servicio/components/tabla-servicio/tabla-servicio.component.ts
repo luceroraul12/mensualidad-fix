@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
+import { ServicioDialogTablaFormularioComponent } from '../servicio-dialog-tabla-formulario/servicio-dialog-tabla-formulario.component';
 
 @Component({
   selector: 'app-tabla-servicio',
@@ -34,7 +36,8 @@ export class TablaServicioComponent implements OnInit {
   constructor(
     // TODO: ver como arreglar lo de tablaService por que no no me deja hacer las operaciones de la tabla desde el service y no desde el componente
     private tablaService: TablaServiceService<Factura>,
-    private servicioService: ServicioService
+    private servicioService: ServicioService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +76,12 @@ export class TablaServicioComponent implements OnInit {
       this.renglonClickeado.emit(factura);
     console.log('clickeado', factura);
     }
+  }
+
+  abrirDialog(factura: Factura){
+    console.log("abrir dialog");
+    
+    this.dialog.open(ServicioDialogTablaFormularioComponent, {data: factura});
   }
 
 }

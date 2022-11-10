@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
@@ -35,6 +36,8 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
 
   @Output() renglonClickeado: EventEmitter<Factura> = new EventEmitter();
 
+  @ViewChild("tabla") public tabla!: MatTable<Factura>;
+
 
   constructor(
     // TODO: ver como arreglar lo de tablaService por que no no me deja hacer las operaciones de la tabla desde el service y no desde el componente
@@ -52,19 +55,19 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
       ({actividad, elemento}) => {
         switch(actividad){
           case Actividad.CREAR:{
-            this.servicios = [...this.servicios, elemento];
+            this.servicios = this.tablaService.agregar(elemento, this.servicios);
+            this.tabla.renderRows();
             break;
           };
           case Actividad.ELIMINAR:{
-            this.servicios = this.servicios.filter(({id}) => id != elemento.id);
+            this.servicios = this.tablaService.quitar(elemento, this.servicios);
+            this.tabla.renderRows();
             break;
           }
           case Actividad.MODIFICAR:{
-            let index = this.servicios
-                                .map(e => e.id)
-                                .indexOf(elemento.id);
-            
-            this.servicios = this.servicios.map((e) => e.id == elemento.id ? elemento : e);
+            // this.servicios.map((e) => e.id == elemento.id ? elemento : e);
+            // this.servicios = [...this.servicios];
+            this.servicios = this.tablaService.mdoificar(elemento, this.servicios);
             break;
           }
         }

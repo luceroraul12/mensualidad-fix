@@ -65,9 +65,8 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
             break;
           }
           case Actividad.MODIFICAR:{
-            // this.servicios.map((e) => e.id == elemento.id ? elemento : e);
-            // this.servicios = [...this.servicios];
             this.servicios = this.tablaService.mdoificar(elemento, this.servicios);
+            this.tabla.renderRows();
             break;
           }
         }

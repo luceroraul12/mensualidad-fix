@@ -15,16 +15,16 @@ export abstract class CrudService<Entidad>{
     public http: HttpClient
   ) { }
 
-  agregar(elemento: Entidad): Observable<Entidad>{
-    console.log(elemento);
+  agregar(modelo: Entidad): Observable<Entidad>{
+    console.log(modelo);
     
-    return this.http.post<Entidad>(`${this.url}/${this.rutaEspecifica}/crear`, elemento);
+    return this.http.post<Entidad>(`${this.url}/${this.rutaEspecifica}/crear`, modelo);
   }
-  modificar(elemento: Entidad): Observable<Entidad>{
-    return this.http.put<Entidad>(`${this.url}/${this.rutaEspecifica}/modificar`, {body: elemento});
+  modificar(modelo: Entidad): Observable<Entidad>{
+    return this.http.put<Entidad>(`${this.url}/${this.rutaEspecifica}/modificar`, modelo);
   }
-  eliminar(elemento: Entidad): Observable<boolean>{
-    return this.http.delete<boolean>(`${this.url}/${this.rutaEspecifica}/eliminar`, {body: elemento});
+  eliminar(modelo: Entidad): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.url}/${this.rutaEspecifica}/eliminar`, {body:{modelo}});
   }
   leer(): Observable<Entidad[]>{
     return this.http.get<Entidad[]>(`${this.url}/${this.rutaEspecifica}/leer`);

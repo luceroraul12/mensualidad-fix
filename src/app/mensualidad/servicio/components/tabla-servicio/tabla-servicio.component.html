@@ -1,16 +1,36 @@
 <table #tabla mat-table [dataSource]="servicios" class="mat-elevation-z8 demo-table">
     <ng-container matColumnDef="servicio">
-        <th mat-header-cell *matHeaderCellDef> {{tituloPersonalizado}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        <th mat-header-cell *matHeaderCellDef> 
+            <div fxLayoutAlign="center center">
+                {{tituloPersonalizado}}
+            </div>    
+        </th>
+        <td mat-cell *matCellDef="let element"> 
+            <div fxLayoutAlign="center center">
+                {{element.nombre}}
+            </div>    
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="url">
-        <th mat-header-cell *matHeaderCellDef> Enlace </th>
-        <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+        <th mat-header-cell *matHeaderCellDef> 
+        <div fxLayoutAlign="center center">
+                Enlace
+            </div>    
+        </th>
+        <td mat-cell *matCellDef="let element"> 
+            <div fxLayoutAlign="center center">
+                {{element.url}}
+            </div>    
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <th mat-header-cell *matHeaderCellDef>
+            <div fxLayoutAlign="center center">
+                Acciones
+            </div>    
+        </th>
         <td mat-cell *matCellDef="let element">
             <app-botonera-tabla
             [puedeEditar]="true"

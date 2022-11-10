@@ -31,7 +31,7 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   ngOnInit(): void {

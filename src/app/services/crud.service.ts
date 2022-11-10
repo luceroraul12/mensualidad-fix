@@ -24,7 +24,7 @@ export abstract class CrudService<Entidad>{
     return this.http.put<Entidad>(`${this.url}/${this.rutaEspecifica}/modificar`, modelo);
   }
   eliminar(modelo: Entidad): Observable<boolean>{
-    return this.http.delete<boolean>(`${this.url}/${this.rutaEspecifica}/eliminar`, {body:{modelo}});
+    return this.http.delete<boolean>(`${this.url}/${this.rutaEspecifica}/eliminar`, {body:modelo});
   }
   leer(): Observable<Entidad[]>{
     return this.http.get<Entidad[]>(`${this.url}/${this.rutaEspecifica}/leer`);

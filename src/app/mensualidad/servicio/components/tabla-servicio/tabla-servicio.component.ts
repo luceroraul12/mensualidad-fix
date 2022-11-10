@@ -44,15 +44,24 @@ export class TablaServicioComponent implements OnInit {
     
     this.tablaService.comunicadorFormularioTabla$.subscribe(
       ({actividad, elemento}) => {
-        if(actividad == Actividad.CREAR){
-          console.log("es para agregar");
-          this.servicios = [...this.servicios, elemento];
-        } else {
-          console.log("es para quitar");
-          this.servicios = this.servicios.filter(({id}) => id != elemento.id);
+        switch(actividad){
+          case Actividad.CREAR:{
+            this.servicios = [...this.servicios, elemento];
+            break;
+          };
+          case Actividad.ELIMINAR:{
+            this.servicios = this.servicios.filter(({id}) => id != elemento.id);
+            break;
+          }
+          case Actividad.MODIFICAR:{
+            let index = this.servicios
+                                .map(e => e.id)
+                                .indexOf(elemento.id);
+            this.servicios[index] = elemento;
+            break;
+          }
         }
       },
-      (err) => alert('Imposible de borrar, pagos realizados')
     );
   }
 
@@ -78,10 +87,8 @@ export class TablaServicioComponent implements OnInit {
     }
   }
 
-  abrirDialog(factura: Factura){
-    console.log("abrir dialog");
-    
-    this.dialog.open(ServicioDialogTablaFormularioComponent, {data: factura});
+  dialogModificar(factura: Factura){
+    this.dialog.open(ServicioDialogTablaFormularioComponent, {data: {...factura}});
   }
 
 }

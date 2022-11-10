@@ -1,7 +1,7 @@
 <form #formPago="ngForm" (ngSubmit)="cargarFormulario()">
-    <div fxLayout="row" fxLayoutGap="10">
-        <div>
-            <mat-form-field appearance="fill">
+    <div fxLayout="row" fxLayoutGap="10" fxFill>
+        <div fxFlex>
+            <mat-form-field appearance="fill" fxFlex>
                 <mat-label>Servicios Disponibles</mat-label>
                 <div *ngIf="!usaFacturasPersonalizadas; else personalizado">
                     <mat-select
@@ -29,8 +29,8 @@
                 </ng-template>
             </mat-form-field>
         </div>
-        <div>
-            <mat-form-field appearance="fill">
+        <div fxFlex>
+            <mat-form-field appearance="fill" fxFlex>
                 <mat-label>Pago Efectuado</mat-label>
                 <input
                     matInput 
@@ -42,8 +42,8 @@
                 >
             </mat-form-field>
         </div>
-        <div>
-            <mat-form-field appearance="fill">
+        <div fxFlex>
+            <mat-form-field appearance="fill" fxFlex>
                 <mat-label>Fecha de pago</mat-label>
                 <input
                     matInput 
@@ -56,13 +56,19 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
-        <div>
-            <button
-                mat-raised-button 
-                color="primary" 
-                type="submit"
-                [disabled]="formPago.invalid || formPago.untouched"
-            >Cargar</button>
+        <div fxLayout="column" fxLayoutGap="10" fxFlex>
+            <div>
+                <button
+                    fxFlex
+                    mat-raised-button 
+                    color="primary" 
+                    type="submit"
+                    [disabled]="formPago.invalid || formPago.untouched"
+                >Cargar</button>
+            </div>
+            <div>
+                <a fxFlex mat-stroked-button [href]="pagoCreado.factura.url" target="_blank">Abrir enlace</a>
+            </div>
         </div>
     </div>
 </form>

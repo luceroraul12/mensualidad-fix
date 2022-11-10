@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
@@ -19,7 +20,9 @@ import { ServicioDialogTablaFormularioComponent } from '../servicio-dialog-tabla
 
   ]
 })
-export class TablaServicioComponent implements OnInit {
+export class TablaServicioComponent implements OnInit, OnDestroy {
+
+  private subscription!: Subscription;
 
 
   public displayedColumns: string[] = ['servicio', 'url','acciones'];
@@ -39,10 +42,13 @@ export class TablaServicioComponent implements OnInit {
     private servicioService: ServicioService,
     private dialog: MatDialog,
   ) { }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     
-    this.tablaService.comunicadorFormularioTabla$.subscribe(
+    this.subscription = this.tablaService.comunicadorFormularioTabla$.subscribe(
       ({actividad, elemento}) => {
         switch(actividad){
           case Actividad.CREAR:{
@@ -57,7 +63,8 @@ export class TablaServicioComponent implements OnInit {
             let index = this.servicios
                                 .map(e => e.id)
                                 .indexOf(elemento.id);
-            this.servicios[index] = elemento;
+            
+            this.servicios = this.servicios.map((e) => e.id == elemento.id ? elemento : e);
             break;
           }
         }
@@ -66,8 +73,6 @@ export class TablaServicioComponent implements OnInit {
   }
 
   eliminar(factura: Factura){
-    console.log(this.servicios);
-    
     this.servicioService.eliminar(factura).subscribe(
       respuesta => {
         console.log("servicio eliminado");

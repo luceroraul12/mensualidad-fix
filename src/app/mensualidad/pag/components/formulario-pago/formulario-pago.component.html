@@ -1,4 +1,5 @@
-<form #formPago="ngForm" (ngSubmit)="cargarFormulario()">
+                    
+<form #formPago="ngForm" (ngSubmit)="cargarFormulario()" *ngIf="pagoCreado">
     <div fxLayout="row" fxLayoutGap="10" fxFill>
         <div fxFlex>
             <mat-form-field appearance="fill" fxFlex>
@@ -72,3 +73,6 @@
         </div>
     </div>
 </form>
+<pre>
+    {{pagoCreado| json}}
+</pre>

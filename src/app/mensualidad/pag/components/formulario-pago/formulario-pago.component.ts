@@ -64,11 +64,10 @@ export class FormularioPagoComponent implements OnInit {
   }
 
   resetear():void {
+    let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: ''};
+    
     this.pagoCreado = {
-      factura: {
-        nombre: '',
-        url: ''
-      },
+      factura: factura,
       fechaDePago: this.fechaEmitida,
     };
   }

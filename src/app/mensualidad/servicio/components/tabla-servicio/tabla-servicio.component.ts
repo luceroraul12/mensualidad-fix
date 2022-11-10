@@ -31,7 +31,7 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
 
   @Input() mostrarEnlace: boolean = false;
   @Input() esRenglonClick: boolean = false;
-  @Input() tituloPersonalizado: string = "Servicio";
+  @Input() tituloPersonalizado: string = "Servicios";
   @Input() servicios: Factura[] = [];
 
   @Output() renglonClickeado: EventEmitter<Factura> = new EventEmitter();
@@ -40,7 +40,6 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    // TODO: ver como arreglar lo de tablaService por que no no me deja hacer las operaciones de la tabla desde el service y no desde el componente
     private tablaService: TablaServiceService<Factura>,
     private servicioService: ServicioService,
     private dialog: MatDialog,

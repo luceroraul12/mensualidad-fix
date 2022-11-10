@@ -1,5 +1,6 @@
 import { outputAst } from '@angular/compiler';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { PagoService } from 'src/app/services/pago.service';
@@ -21,6 +22,8 @@ export class TablaPagoComponent implements OnInit {
   @Input() pagos!: Pago[];
   @Output() eliminarPagoEspecifico: EventEmitter<Pago> = new EventEmitter();
 
+  @ViewChild("tabla") public tabla!: MatTable<Pago>;
+
   public displayedColumns: string[] = ['factura', 'fechaPago', 'pagoEfectuado', 'acciones']
 
   constructor(
@@ -31,14 +34,24 @@ export class TablaPagoComponent implements OnInit {
   ngOnInit(): void {
     this.tablaService.comunicadorFormularioTabla$.subscribe(
       ({actividad, elemento}) => {
-        if(actividad == Actividad.CREAR){
-          console.log("es para agregar");
-          this.pagos = [...this.pagos, elemento];
-        } else {
-          console.log("es para quitar");
-          this.pagos = this.pagos.filter(({id}) => id != elemento.id);
+        switch(actividad){
+          case Actividad.CREAR:{
+            this.pagos = this.tablaService.agregar(elemento, this.pagos);
+            this.tabla.renderRows();
+            break
+          };
+          case Actividad.MODIFICAR:{
+            this.pagos = this.tablaService.mdoificar(elemento, this.pagos);
+            this.tabla.renderRows();
+            break;
+          };
+          case Actividad.ELIMINAR:{
+            this.pagos = this.tablaService.quitar(elemento, this.pagos);
+            this.tabla.renderRows();
+            break;
+          }
         }
-      },
+      }
     );
   }
 

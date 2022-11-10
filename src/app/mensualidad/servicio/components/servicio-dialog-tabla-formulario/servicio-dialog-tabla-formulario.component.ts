@@ -13,6 +13,7 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 export class ServicioDialogTablaFormularioComponent implements OnInit, OnDestroy {
 
   private subscription!: Subscription;
+  public facturaCopia: Factura = {...this.factura};
 
   constructor(
     public dialogRef: MatDialogRef<ServicioDialogTablaFormularioComponent>,

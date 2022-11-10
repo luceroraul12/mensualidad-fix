@@ -68,7 +68,12 @@
                 >Cargar</button>
             </div>
             <div>
-                <a fxFlex mat-stroked-button [href]="pagoCreado.factura.url" target="_blank">Abrir enlace</a>
+                <a 
+                fxFlex mat-stroked-button 
+                [href]="pagoCreado.factura.url"
+                target="_blank"
+                [disabled]="pagoCreado.factura.url == ''"
+                 >Abrir enlace</a>
             </div>
         </div>
     </div>

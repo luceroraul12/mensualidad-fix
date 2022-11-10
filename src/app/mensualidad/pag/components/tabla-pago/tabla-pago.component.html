@@ -1,22 +1,50 @@
 <table #tabla mat-table [dataSource]="pagos" class="mat-elevation-z8">
 
     <ng-container matColumnDef="factura">
-        <th mat-header-cell *matHeaderCellDef> Facutra </th>
-        <td mat-cell *matCellDef="let element"> {{element.factura.nombre}} </td>
+        <th mat-header-cell *matHeaderCellDef> 
+            <div fxLayoutAlign="center center">
+                Factura
+            </div>
+        </th>
+        <td mat-cell *matCellDef="let element"> 
+            <div fxLayoutAlign="center center">
+                {{element.factura.nombre}}
+            </div>
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="fechaPago">
-        <th mat-header-cell *matHeaderCellDef> Fecha de Pago </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaDePago}} </td>
+        <th mat-header-cell *matHeaderCellDef> 
+            <div fxLayoutAlign="center center">
+                Fecha de Pago
+            </div>
+        </th>
+        <td mat-cell *matCellDef="let element"> 
+            <div fxLayoutAlign="center center">
+                {{element.fechaDePago}}
+            </div>    
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="pagoEfectuado">
-        <th mat-header-cell *matHeaderCellDef> Pago </th>
-        <td mat-cell *matCellDef=" let element"> {{element.pago}} </td>
+        <th mat-header-cell *matHeaderCellDef> 
+            <div fxLayoutAlign="center center">
+                Pago
+            </div>    
+        </th>
+        <td mat-cell *matCellDef=" let element">
+            <div fxLayoutAlign="center center">
+                {{element.pago}}
+            </div>
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <th mat-header-cell *matHeaderCellDef> 
+            <div fxLayoutAlign="center center">
+                Acciones
+            </div>    
+        </th>
         <td mat-cell *matCellDef=" let element">
             <app-botonera-tabla
             [puedeEditar]="true"

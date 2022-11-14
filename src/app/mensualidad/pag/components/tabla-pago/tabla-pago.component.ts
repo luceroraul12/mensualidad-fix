@@ -1,10 +1,12 @@
 import { outputAst } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { PagoService } from 'src/app/services/pago.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
+import { PagDialogComponent } from '../pag-dialog/pag-dialog.component';
 
 @Component({
   selector: 'app-tabla-pago',
@@ -28,7 +30,8 @@ export class TablaPagoComponent implements OnInit {
 
   constructor(
     private pagoService: PagoService,
-    private tablaService: TablaServiceService<Pago>
+    private tablaService: TablaServiceService<Pago>,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -67,5 +70,9 @@ export class TablaPagoComponent implements OnInit {
       }
       );
     this.eliminarPagoEspecifico.emit(pago);
+  }
+
+  modificar(pago: Pago): void {
+    this.dialog.open(PagDialogComponent, {data: pago});
   }
 }

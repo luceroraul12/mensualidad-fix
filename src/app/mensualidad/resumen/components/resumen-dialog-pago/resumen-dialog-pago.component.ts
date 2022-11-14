@@ -12,7 +12,6 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 })
 export class ResumenDialogPagoComponent implements OnInit {
 
-
   constructor(
     private dialogRef: MatDialogRef<ResumenDialogPagoComponent>,
     @Inject(MAT_DIALOG_DATA) public facturaSeleccionada: Factura,

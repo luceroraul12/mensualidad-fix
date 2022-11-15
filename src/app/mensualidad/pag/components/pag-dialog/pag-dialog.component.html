@@ -4,6 +4,7 @@
         <li>Factura: <b>{{this.pago.factura.nombre | titlecase}}</b></li>
         <li>Costo: <b>{{this.pago.pago | currency}}</b></li>
         <li>Fecha de pago: <b>{{this.pago.fechaDePago | date:"dd/MM/YYYY"}}</b></li>
+        <li *ngIf="this.pago.comentario">Comentario: {{this.pago.comentario}}</li>
     </ul>
 </h2>
 

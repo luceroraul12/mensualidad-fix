@@ -1,5 +1,5 @@
 <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav mode="push">
+    <mat-sidenav #sidenav mode="over">
 
         <mat-toolbar>
             <span>Menú</span>
@@ -10,7 +10,7 @@
             </button>
         </mat-toolbar>
 
-        <mat-nav-list>
+        <mat-nav-list (click)="sidenav.close()">
             <div *ngFor="let item of rutasComponentes">
                 <a [routerLink]="item.ruta" mat-list-item>
                     <span> {{item.texto}} </span>

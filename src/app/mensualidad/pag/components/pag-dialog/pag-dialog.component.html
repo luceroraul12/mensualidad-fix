@@ -1,3 +1,10 @@
-<p>pag-dialog works!</p>
-<h1>Modificando pago  de <strong>{{this.pagoCopia.pago | currency}} </strong> realizado el <strong>{{this.pagoCopia.fechaDePago | date}}</strong> de la factura <strong>{{this.pagoCopia.factura.nombre| titlecase}} </strong>         </h1>
+<h2>
+    Modificando: <hr>
+    <ul>
+        <li>Factura: <b>{{this.pago.factura.nombre | titlecase}}</b></li>
+        <li>Costo: <b>{{this.pago.pago | currency}}</b></li>
+        <li>Fecha de pago: <b>{{this.pago.fechaDePago | date:"dd/MM/YYYY"}}</b></li>
+    </ul>
+</h2>
+
 <app-formulario-pago></app-formulario-pago>

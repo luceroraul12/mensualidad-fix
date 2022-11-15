@@ -75,4 +75,14 @@ export class TablaPagoComponent implements OnInit {
   modificar(pago: Pago): void {
     this.dialog.open(PagDialogComponent, {data: pago});
   }
+
+  tieneComentario(pago: Pago): boolean{
+    let resultado: boolean = false;
+    try{
+      resultado = pago.comentario!.length > 1;
+    } catch {
+      
+    }
+    return resultado;
+  }
 }

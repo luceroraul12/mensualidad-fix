@@ -49,7 +49,7 @@
             <app-botonera-tabla
             [puedeEditar]="true"
             [puedeEliminar]="true"
-            [puedeVer]="true"
+            [puedeVer]="tieneComentario(element)"
             (eliminar)="eliminar(element)"
             (editar)="modificar(element)"
             ></app-botonera-tabla>

@@ -37,7 +37,9 @@ export class FormularioPagoComponent implements OnInit {
     private tablaService: TablaServiceService<Pago>,
     private comunicadorService: ComunicadorService
 
-  ) { }
+  ) { 
+    this.resetear();
+   }
 
   ngOnInit(): void {
     //TODO: ver de arreglar esto, no deberia existir facturas personalizadas sino que Es para resumen
@@ -56,7 +58,6 @@ export class FormularioPagoComponent implements OnInit {
     )
 
 
-    this.resetear();
   }
 
 

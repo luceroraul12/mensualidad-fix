@@ -1,7 +1,12 @@
 <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
-    <button mat-mini-fab color="primary" *ngIf="puedeVer" (click)="clickVer()">
+    <button mat-mini-fab color="primary" *ngIf="puedeVer else vacio" (click)="clickVer()">
         <mat-icon>visibility</mat-icon>
     </button>
+    <ng-template #vacio> 
+        <button style="opacity: 0;" disabled>
+            <mat-icon>visibility</mat-icon>
+        </button>
+    </ng-template>
     <button mat-mini-fab color="accent" *ngIf="puedeEditar" (click)="clickEditar()">
         <mat-icon>edit</mat-icon>
     </button>

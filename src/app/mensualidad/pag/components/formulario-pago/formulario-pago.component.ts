@@ -93,6 +93,7 @@ export class FormularioPagoComponent implements OnInit {
     this.pagoCreado = {
       factura: factura,
       fechaDePago: this.esParaModificar ? this.pagoCreado.fechaDePago : this.fechaEmitida,
+      comentario: ''
     };
   }
 }

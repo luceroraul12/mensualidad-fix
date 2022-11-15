@@ -57,6 +57,18 @@
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
         </div>
+        <div fxFlex>
+            <mat-form-field appearance="fill" fxFlex>
+                <mat-label>Comentario</mat-label>
+                <input
+                    matInput 
+                    type="text"
+                    placeholder="Nota..."
+                    name="comentario"
+                    [(ngModel)]="pagoCreado.comentario"
+                >
+            </mat-form-field>
+        </div>
         <div fxLayout="column" fxLayoutGap="10" fxFlex>
             <div>
                 <button

@@ -5,4 +5,5 @@ export interface Pago extends Modelo {
     fechaDePago: Date;
     pago?: number;
     factura: Factura;
+    comentario?: string;
 }

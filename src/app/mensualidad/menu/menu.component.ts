@@ -13,6 +13,11 @@ interface MenuItem {
 })
 export class MenuComponent implements OnInit {
 
+  public rutaSeleccionada: MenuItem = {
+    ruta: "resumenes",
+    texto: "Resumenes"
+  };
+
   public rutasComponentes: MenuItem[] = [
     {
       ruta: "servicios",
@@ -34,4 +39,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  seleccionarRuta(ruta: MenuItem): void{
+    this.rutaSeleccionada = ruta;
+  }
 }

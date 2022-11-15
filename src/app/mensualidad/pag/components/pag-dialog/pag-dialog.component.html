@@ -1,11 +1,17 @@
 <h2>
-    Modificando: <hr>
+    <div *ngIf="!esVer else ver">Modificando:</div>
+    <ng-template #ver>Visualizando</ng-template>
+    <hr>
     <ul>
-        <li>Factura: <b>{{this.pago.factura.nombre | titlecase}}</b></li>
-        <li>Costo: <b>{{this.pago.pago | currency}}</b></li>
-        <li>Fecha de pago: <b>{{this.pago.fechaDePago | date:"dd/MM/YYYY"}}</b></li>
-        <li *ngIf="this.pago.comentario">Comentario: {{this.pago.comentario}}</li>
+        <li>Factura: <b>{{data.pago.factura.nombre | titlecase}}</b></li>
+        <li>Costo: <b>{{data.pago.pago | currency}}</b></li>
+        <li>Fecha de pago: <b>{{data.pago.fechaDePago | date:"dd/MM/YYYY"}}</b></li>
+        <li *ngIf="data.pago.comentario">Comentario: {{data.pago.comentario}}</li>
     </ul>
 </h2>
 
-<app-formulario-pago [pagoCreado]="pago" [esParaModificar]="true"></app-formulario-pago>
+<app-formulario-pago 
+[pagoCreado]="data.pago" 
+[esParaModificar]="true"
+*ngIf="!esVer"
+></app-formulario-pago>

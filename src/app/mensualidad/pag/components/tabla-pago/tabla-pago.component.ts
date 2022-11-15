@@ -73,7 +73,16 @@ export class TablaPagoComponent implements OnInit {
   }
 
   modificar(pago: Pago): void {
-    this.dialog.open(PagDialogComponent, {data: pago});
+    let esVer: boolean = false;
+    this.dialog.open(PagDialogComponent, {data: {pago, esVer}});
+  }
+
+  ver(pago: Pago): void {
+    let esVer: boolean = true;
+    this.dialog.open(PagDialogComponent, {data: {
+      pago,
+      esVer
+    }});
   }
 
   tieneComentario(pago: Pago): boolean{

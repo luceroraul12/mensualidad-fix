@@ -4,7 +4,6 @@ import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
-import { MenuComponent } from 'src/app/mensualidad/menu/menu.component';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
 import { PagoService } from 'src/app/services/pago.service';
 import { ServicioService } from 'src/app/services/servicio.service';
@@ -56,6 +55,7 @@ export class FormularioPagoComponent implements OnInit {
       fecha => this.fechaEmitida = fecha
     )
 
+
     this.resetear();
   }
 
@@ -89,7 +89,6 @@ export class FormularioPagoComponent implements OnInit {
 
   resetear():void {
     let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: ''};
-    this.pagoCreado.fechaDePago.setMinutes(this.pagoCreado.fechaDePago.getMinutes() + this.pagoCreado.fechaDePago.getTimezoneOffset())
     
     this.pagoCreado = {
       factura: factura,

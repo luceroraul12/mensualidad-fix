@@ -4,6 +4,7 @@ import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
 import { Factura } from 'src/app/interfaces/servicio.interface';
+import { MenuComponent } from 'src/app/mensualidad/menu/menu.component';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
 import { PagoService } from 'src/app/services/pago.service';
 import { ServicioService } from 'src/app/services/servicio.service';
@@ -22,11 +23,14 @@ export class FormularioPagoComponent implements OnInit {
   @Input() serviciosDisponibles!: Factura[];
   @Input() usaFacturasPersonalizadas: boolean = false;
 
+  @Input() esParaModificar: boolean = false;
+  @Input() pagoCreado!: Pago;
+
+
   @ViewChild("formPago") formPago!: NgForm;
 
 
   public fechaEmitida: Date = new Date();
-  public pagoCreado!: Pago;
 
   constructor(
     private servicioService: ServicioService,
@@ -37,14 +41,21 @@ export class FormularioPagoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(!this.usaFacturasPersonalizadas){
+    //TODO: ver de arreglar esto, no deberia existir facturas personalizadas sino que Es para resumen
+    //funcionamiento normal, cuando no tiene facturas personalizadas ni para modificar
+    if(!this.usaFacturasPersonalizadas && !this.esParaModificar){
       this.servicioService.leer().subscribe(
         (servicios: Factura[]) => this.serviciosDisponibles = servicios
       )
+    } else if(this.esParaModificar){
+      this.serviciosDisponibles = [this.pagoCreado.factura];
     };
+
+    //para especificar la fecha del formulario desde resumen
     this.comunicadorService.fechaResumen$.subscribe(
       fecha => this.fechaEmitida = fecha
     )
+
     this.resetear();
   }
 
@@ -53,22 +64,36 @@ export class FormularioPagoComponent implements OnInit {
     console.log(this.formPago.value);
     this.pagoCreado.factura = this.formPago.controls['servicio'].value;
 
-    this.pagoService.agregar(this.pagoCreado).subscribe( respuesta => {
-      this.tablaService.comunicadorFormularioTabla$.next({
-        actividad: Actividad.CREAR,
-        elemento: respuesta
+    if(!this.esParaModificar){
+      this.pagoService.agregar(this.pagoCreado).subscribe( respuesta => {
+        this.tablaService.comunicadorFormularioTabla$.next({
+          actividad: Actividad.CREAR,
+          elemento: respuesta
+        });
+        this.resetear();
       });
-      this.resetear();
-    });
+    } else {
+      this.pagoService.modificar(this.pagoCreado).subscribe(
+        respuesta => {
+          this.tablaService.comunicadorFormularioTabla$.next({
+            actividad: Actividad.MODIFICAR,
+            elemento: respuesta
+          });
+        }
+      );
+    }
+
+
     
   }
 
   resetear():void {
     let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: ''};
+    this.pagoCreado.fechaDePago.setMinutes(this.pagoCreado.fechaDePago.getMinutes() + this.pagoCreado.fechaDePago.getTimezoneOffset())
     
     this.pagoCreado = {
       factura: factura,
-      fechaDePago: this.fechaEmitida,
+      fechaDePago: this.esParaModificar ? this.pagoCreado.fechaDePago : this.fechaEmitida,
     };
   }
 }

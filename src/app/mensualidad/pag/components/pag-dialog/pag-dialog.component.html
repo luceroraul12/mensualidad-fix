@@ -3,16 +3,16 @@
     <ng-template #ver>Visualizando</ng-template>
     <hr>
     <mat-list role="list">
-        <div mat-subheader fxLayoutGap="10px">Factura</div>
+        <div mat-subheader>Factura</div>
         <mat-list-item> {{data.pago.factura.nombre | titlecase}}</mat-list-item>
 
-        <div mat-subheader fxLayoutGap="">Pago</div>
+        <div mat-subheader>Pago</div>
         <mat-list-item>{{data.pago.pago | currency}}</mat-list-item>
 
-        <div mat-subheader fxLayoutGap="">Fecha de Pago</div>
+        <div mat-subheader>Fecha de Pago</div>
         <mat-list-item>{{data.pago.fechaDePago | date:"dd/MM/YYYY"}}</mat-list-item>
 
-        <div mat-subheader fxLayoutGap="">Comentario</div>
+        <div mat-subheader>Comentario</div>
         <mat-list-item> 
             <div *ngIf="data.pago.comentario else sinComentario">{{data.pago.comentario}}</div>
             <ng-template #sinComentario>Sin comentario</ng-template>

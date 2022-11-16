@@ -1,6 +1,6 @@
                     
 <form #formPago="ngForm" (ngSubmit)="cargarFormulario()" *ngIf="pagoCreado">
-    <div fxLayout="row" fxLayoutGap="10" fxFill>
+    <div [fxLayout]="adaptarOrientacion()" fxLayoutGap="10" fxFill>
         <div fxFlex>
             <mat-form-field appearance="fill" fxFlex>
                 <mat-label>Servicios Disponibles</mat-label>

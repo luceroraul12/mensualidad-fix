@@ -25,6 +25,8 @@ export class FormularioPagoComponent implements OnInit {
   @Input() esParaModificar: boolean = false;
   @Input() pagoCreado!: Pago;
 
+  public orientacion!: string;
+
 
   @ViewChild("formPago") formPago!: NgForm;
 
@@ -57,6 +59,7 @@ export class FormularioPagoComponent implements OnInit {
       fecha => this.fechaEmitida = fecha
     )
 
+    this.adaptarOrientacion();
 
   }
 
@@ -96,5 +99,9 @@ export class FormularioPagoComponent implements OnInit {
       fechaDePago: this.esParaModificar ? this.pagoCreado.fechaDePago : this.fechaEmitida,
       comentario: ''
     };
+  }
+
+  adaptarOrientacion(): string{
+    return this.esParaModificar ? "column" : "row";
   }
 }

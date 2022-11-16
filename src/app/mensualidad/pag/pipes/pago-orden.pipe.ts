@@ -7,7 +7,7 @@ import { Pago } from 'src/app/interfaces/pago.interface';
 export class PagoOrdenPipe implements PipeTransform {
 
   transform(pagos: Pago[]): Pago[] {
-    return pagos.sort((a,b) => a.factura.nombre.localeCompare(b.factura.nombre))
+    return pagos.sort((a,b) => a.factura.nombre.localeCompare(b.factura.nombre));
   }
 
 }

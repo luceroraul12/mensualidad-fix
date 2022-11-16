@@ -20,6 +20,7 @@ import { FormularioServicioComponent } from './servicio/components/formulario-se
 import { ResumenDialogPagoComponent } from './resumen/components/resumen-dialog-pago/resumen-dialog-pago.component';
 import { ServicioDialogTablaFormularioComponent } from './servicio/components/servicio-dialog-tabla-formulario/servicio-dialog-tabla-formulario.component';
 import { PagDialogComponent } from './pag/components/pag-dialog/pag-dialog.component';
+import { FacturaOrdenPipe } from './servicio/pipe/factura-orden.pipe';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { PagDialogComponent } from './pag/components/pag-dialog/pag-dialog.compo
     FormularioResumenComponent,
     ResumenDialogPagoComponent,
     ServicioDialogTablaFormularioComponent,
-    PagDialogComponent
+    PagDialogComponent,
+    FacturaOrdenPipe
   ],
   imports: [
     CommonModule,

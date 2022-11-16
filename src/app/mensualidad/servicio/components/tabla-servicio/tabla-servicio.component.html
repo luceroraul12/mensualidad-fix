@@ -1,4 +1,4 @@
-<table #tabla mat-table [dataSource]="servicios | facturaOrden" class="mat-elevation-z8 demo-table">
+<table #tabla *ngIf="servicios" mat-table [dataSource]="servicios | facturaOrden" class="mat-elevation-z8 demo-table">
     <ng-container matColumnDef="servicio">
         <th mat-header-cell *matHeaderCellDef> 
             <div fxLayoutAlign="center center">

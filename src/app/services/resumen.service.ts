@@ -41,4 +41,5 @@ export class ResumenService {
     }
     return resultado;
   }
+
 }

@@ -1,4 +1,4 @@
-<table #tabla mat-table [dataSource]="pagos" class="mat-elevation-z8">
+<table #tabla mat-table [dataSource]="pagos | pagoOrden" class="mat-elevation-z8">
 
     <ng-container matColumnDef="factura">
         <th mat-header-cell *matHeaderCellDef> 

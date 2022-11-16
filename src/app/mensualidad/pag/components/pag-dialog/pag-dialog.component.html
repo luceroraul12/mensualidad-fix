@@ -1,7 +1,12 @@
-<div fxLayout="row">
-    <div>
-        <div *ngIf="!esVer else ver">Modificando:</div>
-            <ng-template #ver>Visualizando</ng-template>
+
+
+<mat-card>
+    <mat-card-title>
+        <div *ngIf="!esVer else ver">Modificando</div>
+        <ng-template #ver>Visualizando</ng-template>
+    </mat-card-title>
+    <mat-card-content>
+        <div fxLayout="row">
             <mat-list role="list">
                 <div mat-subheader>Factura</div>
                 <mat-list-item> {{data.pago.factura.nombre | titlecase}}</mat-list-item>
@@ -18,13 +23,13 @@
                     <ng-template #sinComentario>Sin comentario</ng-template>
                 </mat-list-item>
             </mat-list>
-    </div>
-    
-    <div>
-        <app-formulario-pago 
-    [pagoCreado]="pagoCopia" 
-    [esParaModificar]="true"
-    *ngIf="!esVer"
-    ></app-formulario-pago>
-    </div>
-</div>
+            <div>
+                <app-formulario-pago 
+            [pagoCreado]="pagoCopia" 
+            [esParaModificar]="true"
+            *ngIf="!esVer"
+            ></app-formulario-pago>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

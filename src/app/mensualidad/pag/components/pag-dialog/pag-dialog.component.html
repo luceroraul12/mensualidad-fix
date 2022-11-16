@@ -2,12 +2,22 @@
     <div *ngIf="!esVer else ver">Modificando:</div>
     <ng-template #ver>Visualizando</ng-template>
     <hr>
-    <ul>
-        <li>Factura: <b>{{data.pago.factura.nombre | titlecase}}</b></li>
-        <li>Costo: <b>{{data.pago.pago | currency}}</b></li>
-        <li>Fecha de pago: <b>{{data.pago.fechaDePago | date:"dd/MM/YYYY"}}</b></li>
-        <li *ngIf="data.pago.comentario">Comentario: {{data.pago.comentario}}</li>
-    </ul>
+    <mat-list role="list">
+        <div mat-subheader fxLayoutGap="10px">Factura</div>
+        <mat-list-item> {{data.pago.factura.nombre | titlecase}}</mat-list-item>
+
+        <div mat-subheader fxLayoutGap="">Pago</div>
+        <mat-list-item>{{data.pago.pago | currency}}</mat-list-item>
+
+        <div mat-subheader fxLayoutGap="">Fecha de Pago</div>
+        <mat-list-item>{{data.pago.fechaDePago | date:"dd/MM/YYYY"}}</mat-list-item>
+
+        <div mat-subheader fxLayoutGap="">Comentario</div>
+        <mat-list-item> 
+            <div *ngIf="data.pago.comentario else sinComentario">{{data.pago.comentario}}</div>
+            <ng-template #sinComentario>Sin comentario</ng-template>
+        </mat-list-item>
+    </mat-list>
 </h2>
 
 <app-formulario-pago 

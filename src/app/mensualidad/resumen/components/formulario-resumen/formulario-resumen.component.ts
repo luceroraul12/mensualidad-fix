@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { map, mergeMap, Subscriber, Subscription } from 'rxjs';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
@@ -9,7 +9,7 @@ import { PagoService } from 'src/app/services/pago.service';
   templateUrl: './formulario-resumen.component.html',
   styles: []
 })
-export class FormularioResumenComponent implements OnInit {
+export class FormularioResumenComponent implements OnInit, OnDestroy {
 
   public total!: number;
   private sub!: Subscription;
@@ -19,9 +19,12 @@ export class FormularioResumenComponent implements OnInit {
   constructor(
     private comunicadorService: ComunicadorService,
   ) { }
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
   ngOnInit(): void {
-    this.comunicadorService.pagosResumen$.subscribe(
+    this.sub = this.comunicadorService.pagosResumen$.subscribe(
       pagos => {
         this.total = pagos
                         .map(({pago}) => pago)

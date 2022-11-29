@@ -1,26 +1,34 @@
-<form #formResumen="ngForm" (ngSubmit)="cargar()">
-    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
-        <div>
-            <mat-form-field appearance="fill">
-                <mat-label>Fecha para resumen</mat-label>
-                <input
-                    matInput 
-                    [matDatepicker]="picker"
-                    ngModel
-                    name="fechaPago"
-                    required
-                >
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div>
-            <button
-                mat-raised-button 
-                color="primary" 
-                type="submit"
-                [disabled]="formResumen.invalid"
-            >Cargar</button>
-        </div>
+<div fxLayout="row">
+    <div>
+        <form #formResumen="ngForm" (ngSubmit)="cargar()">
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha para resumen</mat-label>
+                        <input
+                            matInput 
+                            [matDatepicker]="picker"
+                            ngModel
+                            name="fechaPago"
+                            required
+                        >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button
+                        mat-raised-button 
+                        color="primary" 
+                        type="submit"
+                        [disabled]="formResumen.invalid"
+                    >Cargar</button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+    <div fxFlex></div>
+    <div *ngIf="total">
+        {{total | currency}}
+    </div>
+</div>

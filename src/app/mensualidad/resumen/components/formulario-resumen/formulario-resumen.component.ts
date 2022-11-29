@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { map, mergeMap, Subscriber, Subscription } from 'rxjs';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
+import { PagoService } from 'src/app/services/pago.service';
 
 @Component({
   selector: 'app-formulario-resumen',
@@ -9,13 +11,23 @@ import { ComunicadorService } from 'src/app/services/comunicador.service';
 })
 export class FormularioResumenComponent implements OnInit {
 
+  public total!: number;
+  private sub!: Subscription;
+
   @ViewChild('formResumen') formulario!: NgForm;
 
   constructor(
-    private comunicadorService: ComunicadorService
+    private comunicadorService: ComunicadorService,
   ) { }
 
   ngOnInit(): void {
+    this.comunicadorService.pagosResumen$.subscribe(
+      pagos => {
+        this.total = pagos
+                        .map(({pago}) => pago)
+                        .reduce((p1,p2) => p1! + p2!)!
+      }
+    )
   }
 
   cargar(): void {

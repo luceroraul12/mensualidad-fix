@@ -64,6 +64,7 @@ export class TablaResumenComponent implements OnInit, OnDestroy {
         this.facturasPagadas = facturasPagadas;
         this.facturasSinPagar = facturasImpagas;
         this.pagosRealizados = pagosRealizados;
+        this.comunicadorService.pagosResumen$.next(pagosRealizados);
       }
     )
   }

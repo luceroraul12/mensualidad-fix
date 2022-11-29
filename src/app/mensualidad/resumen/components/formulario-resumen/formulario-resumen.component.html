@@ -29,6 +29,8 @@
     </div>
     <div fxFlex></div>
     <div *ngIf="total">
-        {{total | currency}}
+        <h1>
+            Monto pagado: <strong>{{total | currency}}</strong>
+        </h1>
     </div>
 </div>

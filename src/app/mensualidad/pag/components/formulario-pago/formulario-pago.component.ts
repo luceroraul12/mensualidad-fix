@@ -104,4 +104,8 @@ export class FormularioPagoComponent implements OnInit {
   adaptarOrientacion(): string{
     return this.esParaModificar ? "column" : "row";
   }
+
+  esURLValida(url: string): boolean{
+    return url.includes("http");
+  }
 }

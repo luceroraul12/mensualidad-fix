@@ -84,7 +84,7 @@
                 fxFlex mat-stroked-button 
                 [href]="pagoCreado.factura.url"
                 target="_blank"
-                [disabled]="pagoCreado.factura.url == ''"
+                [disabled]="!esURLValida(pagoCreado.factura.url)"
                 >Abrir enlace</a>
             </div>
         </div>

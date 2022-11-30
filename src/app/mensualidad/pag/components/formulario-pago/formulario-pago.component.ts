@@ -106,13 +106,15 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
   }
 
   resetear():void {
-    let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: ''};
+    if(!this.esParaModificar){
+      let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: ''};
     
-    this.pagoCreado = {
-      factura: factura,
-      fechaDePago: this.esParaModificar ? this.pagoCreado.fechaDePago : this.fechaEmitida,
-      comentario: ''
-    };
+      this.pagoCreado = {
+        factura: factura,
+        fechaDePago: this.esParaModificar ? this.pagoCreado.fechaDePago : this.fechaEmitida,
+        comentario: ''
+      };
+    }
   }
 
   adaptarOrientacion(): string{

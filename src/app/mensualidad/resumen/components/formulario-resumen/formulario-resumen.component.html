@@ -28,9 +28,12 @@
         </form>
     </div>
     <div fxFlex></div>
-    <div *ngIf="total">
+    <div *ngIf="total else sinPagos">
         <h1>
             Monto pagado: <strong>{{total | currency}}</strong>
         </h1>
     </div>
+    <ng-template #sinPagos>
+        <h1>Sin facturas pagadas.</h1>
+    </ng-template>
 </div>

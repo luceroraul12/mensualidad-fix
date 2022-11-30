@@ -9,7 +9,16 @@ interface MenuItem {
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styles: []
+  styles: [`
+    .menu{
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .contenido{
+      z-index: 2;
+    }
+  `]
 })
 export class MenuComponent implements OnInit {
 

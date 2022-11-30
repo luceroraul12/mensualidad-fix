@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
 import { Pago } from 'src/app/interfaces/pago.interface';
@@ -17,7 +18,7 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
   styles: [
   ]
 })
-export class FormularioPagoComponent implements OnInit {
+export class FormularioPagoComponent implements OnInit, OnDestroy{
 
   @Input() serviciosDisponibles!: Factura[];
   @Input() usaFacturasPersonalizadas: boolean = false;
@@ -26,6 +27,8 @@ export class FormularioPagoComponent implements OnInit {
   @Input() pagoCreado!: Pago;
 
   public orientacion!: string;
+
+  private subs: Subscription = new Subscription;
 
 
   @ViewChild("formPago") formPago!: NgForm;
@@ -40,25 +43,32 @@ export class FormularioPagoComponent implements OnInit {
     private comunicadorService: ComunicadorService
 
   ) { 
-    this.resetear();
+    // this.resetear();
    }
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 
   ngOnInit(): void {
+    this.resetear();
     //TODO: ver de arreglar esto, no deberia existir facturas personalizadas sino que Es para resumen
     //funcionamiento normal, cuando no tiene facturas personalizadas ni para modificar
     if(!this.usaFacturasPersonalizadas && !this.esParaModificar){
-      this.servicioService.leer().subscribe(
-        (servicios: Factura[]) => this.serviciosDisponibles = servicios
-      )
+      this.subs.add(
+        this.servicioService.leer().subscribe(
+          (servicios: Factura[]) => this.serviciosDisponibles = servicios
+        )
+      ) 
     } else if(this.esParaModificar){
       this.serviciosDisponibles = [this.pagoCreado.factura];
     };
 
     //para especificar la fecha del formulario desde resumen
-    this.comunicadorService.fechaResumen$.subscribe(
-      fecha => this.fechaEmitida = fecha
+    this.subs.add(
+      this.comunicadorService.fechaResumen$.subscribe(
+        fecha => this.fechaEmitida = fecha
+      )
     )
-
     this.adaptarOrientacion();
 
   }
@@ -69,21 +79,25 @@ export class FormularioPagoComponent implements OnInit {
     this.pagoCreado.factura = this.formPago.controls['servicio'].value;
 
     if(!this.esParaModificar){
-      this.pagoService.agregar(this.pagoCreado).subscribe( respuesta => {
-        this.tablaService.comunicadorFormularioTabla$.next({
-          actividad: Actividad.CREAR,
-          elemento: respuesta
-        });
-        this.resetear();
-      });
-    } else {
-      this.pagoService.modificar(this.pagoCreado).subscribe(
-        respuesta => {
+      this.subs.add(
+        this.pagoService.agregar(this.pagoCreado).subscribe( respuesta => {
           this.tablaService.comunicadorFormularioTabla$.next({
-            actividad: Actividad.MODIFICAR,
+            actividad: Actividad.CREAR,
             elemento: respuesta
           });
-        }
+          this.resetear();
+        })
+      );
+    } else {
+      this.subs.add(
+        this.pagoService.modificar(this.pagoCreado).subscribe(
+          respuesta => {
+            this.tablaService.comunicadorFormularioTabla$.next({
+              actividad: Actividad.MODIFICAR,
+              elemento: respuesta
+            });
+          }
+        )
       );
     }
 

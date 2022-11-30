@@ -30,7 +30,7 @@
     <div fxFlex></div>
     <div *ngIf="total else sinPagos">
         <h1>
-            Monto pagado: <strong>{{total | currency}}</strong>
+            Monto pagado: <strong>{{total | currency: "ARS" }}</strong>
         </h1>
     </div>
     <ng-template #sinPagos>

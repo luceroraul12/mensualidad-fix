@@ -12,7 +12,7 @@
                 <mat-list-item> {{data.pago.factura.nombre | titlecase}}</mat-list-item>
         
                 <div mat-subheader>Pago</div>
-                <mat-list-item>{{data.pago.pago | currency}}</mat-list-item>
+                <mat-list-item>{{data.pago.pago | currency: "ARS"}}</mat-list-item>
         
                 <div mat-subheader>Fecha de Pago</div>
                 <mat-list-item>{{data.pago.fechaDePago | date:"dd/MM/YYYY"}}</mat-list-item>

@@ -28,7 +28,7 @@ export class FormularioResumenComponent implements OnInit, OnDestroy {
       pagos => {
         this.total = pagos
                         .map(({pago}) => pago)
-                        .reduce((p1,p2) => p1! + p2!)!
+                        .reduce((p1,p2) => p1! + p2!, 0)!
       }
     )
   }

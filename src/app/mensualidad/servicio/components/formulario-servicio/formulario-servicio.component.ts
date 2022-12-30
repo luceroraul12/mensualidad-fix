@@ -21,7 +21,8 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
 
   @Input() factura: Factura = {
     nombre: '',
-    url: ''
+    url: '',
+    esRepetible: false
   }
 
   constructor(
@@ -65,6 +66,7 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
     this.factura = {
       nombre: '',
       url: '',
+      esRepetible: false
     }
   }
 }

@@ -107,7 +107,7 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
 
   resetear():void {
     if(!this.esParaModificar){
-      let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: ''};
+      let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: '', esRepetible: false};
     
       this.pagoCreado = {
         factura: factura,

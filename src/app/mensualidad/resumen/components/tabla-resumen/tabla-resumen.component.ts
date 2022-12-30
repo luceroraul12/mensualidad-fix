@@ -60,11 +60,11 @@ export class TablaResumenComponent implements OnInit, OnDestroy {
     this.resumenService.obtenerResumenMesAnio(this.fechaElegida.getMonth()+1,this.fechaElegida.getFullYear())
     .pipe(first())
     .subscribe(
-      ({facturasImpagas,facturasPagadas,pagosRealizados}) => {
+      ({facturasImpagas,facturasPagadas,pagosPagados}) => {
         this.facturasPagadas = facturasPagadas;
         this.facturasSinPagar = facturasImpagas;
-        this.pagosRealizados = pagosRealizados;
-        this.comunicadorService.pagosResumen$.next(pagosRealizados);
+        this.pagosRealizados = pagosPagados;
+        this.comunicadorService.pagosResumen$.next(pagosPagados);
       }
     )
   }

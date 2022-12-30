@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pago } from '../interfaces/pago.interface';
+import { ResumenDto } from '../interfaces/resumen-dto.interface';
 import { ResumenRespuesta } from '../interfaces/resumen-respuesta.interface';
 import { Factura } from '../interfaces/servicio.interface';
 
@@ -15,12 +16,12 @@ export class ResumenService {
     private http: HttpClient
   ) { }
 
-  obtenerResumenMesAnio(mes:number, anio: number): Observable<ResumenRespuesta>{
+  obtenerResumenMesAnio(mes:number, anio: number): Observable<ResumenDto>{
     let params: HttpParams = new HttpParams()
                                 .set("mes", mes)
                                 .set("anio",anio);
 
-    return this.http.get<ResumenRespuesta>(`${environment.urlApi}/resumen`,{params});
+    return this.http.get<ResumenDto>(`${environment.urlApi}/resumen`,{params});
   }
 
  //////////////////////////////////////////////// //

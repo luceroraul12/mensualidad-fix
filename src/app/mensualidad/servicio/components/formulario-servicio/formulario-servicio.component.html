@@ -27,10 +27,10 @@
             </mat-form-field>
         </div>
         <div>
-            <mat-slide-toggle>Repetible</mat-slide-toggle>
-
-            <!-- <mat-form-field appearance="legacy">
-            </mat-form-field> -->
+            <mat-slide-toggle
+            name="esRepetible"
+            [(ngModel)]="factura.esRepetible"
+            [checked]="factura.esRepetible">Repetible</mat-slide-toggle>
         </div>
         <div>
             <button

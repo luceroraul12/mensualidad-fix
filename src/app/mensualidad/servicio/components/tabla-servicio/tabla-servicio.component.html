@@ -25,6 +25,21 @@
         </td>
     </ng-container>
 
+    <ng-container matColumnDef="esRepetible">
+        <th mat-header-cell *matHeaderCellDef> 
+            <div fxLayoutAlign="center center">
+                    Repetible
+                </div>    
+            </th>
+            <td mat-cell *matCellDef="let element"> 
+                <div fxLayoutAlign="center center">
+                    {{element.esRepetible}}
+                </div>    
+            </td>
+    </ng-container>
+
+  
+
     <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef>
             <div fxLayoutAlign="center center">
@@ -56,6 +71,5 @@
         (click)="clickearRenglon(row)"
         *matRowDef="let row; columns: displayedColumnsSinUrl;"></tr>
     </ng-template>
-
     
 </table>

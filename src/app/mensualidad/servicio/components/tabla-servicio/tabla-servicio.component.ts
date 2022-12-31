@@ -26,10 +26,11 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
   private subscription!: Subscription;
 
 
-  public displayedColumns: string[] = ['servicio', 'url','acciones'];
+  public displayedColumns: string[] = ['servicio', 'url',"esRepetible",'acciones'];
   public displayedColumnsSinUrl: string[] = ['servicio'];
 
   @Input() mostrarEnlace: boolean = false;
+  @Input() mostrarRepetible: boolean = true;
   @Input() esRenglonClick: boolean = false;
   @Input() tituloPersonalizado: string = "Servicios";
   @Input() servicios: Factura[] = [];

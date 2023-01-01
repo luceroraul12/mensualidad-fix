@@ -1,1 +1,11 @@
-<p>dialog-basico works!</p>
+<mat-card-title>{{titulo}}</mat-card-title>
+
+<mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
+
+<mat-card-content>
+    <ng-content select="[contenido]"></ng-content>
+</mat-card-content>
+
+<mat-card-actions>
+    <ng-content select="[botones]" class="botonera"></ng-content>
+</mat-card-actions>

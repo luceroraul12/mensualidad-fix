@@ -15,7 +15,15 @@ import { ServicioDialogTablaFormularioComponent } from '../servicio-dialog-tabla
     `
     .demo-table {
     width: 100%;
-} 
+    }
+    .celda-repetible{
+      background-color: rgb(199, 0, 57)
+    }
+
+    .celda-unica{
+      background-color: rgb(88, 24, 69 )
+    }
+
     
     `
 

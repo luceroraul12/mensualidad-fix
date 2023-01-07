@@ -13,7 +13,7 @@ import { DialogBasicoComponent } from './dialog-basico/dialog-basico.component';
   declarations: [
   
     BotoneraTablaComponent,
-        DialogBasicoComponent
+    DialogBasicoComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +21,8 @@ import { DialogBasicoComponent } from './dialog-basico/dialog-basico.component';
     FlexLayoutModule
   ],
   exports:[
-    BotoneraTablaComponent
+    BotoneraTablaComponent,
+    DialogBasicoComponent
   ]
 })
 export class SharedModule { }

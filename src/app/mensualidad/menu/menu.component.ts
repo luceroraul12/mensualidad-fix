@@ -40,6 +40,10 @@ export class MenuComponent implements OnInit {
       ruta: "resumenes",
       texto: "Resumenes"
     },
+    {
+      ruta: "usuarios",
+      texto: "Usuarios"
+    }
   ]
 
 

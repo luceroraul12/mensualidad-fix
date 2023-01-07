@@ -5,6 +5,7 @@ import { BotoneraTablaComponent } from './botonera-tabla/botonera-tabla.componen
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogBasicoComponent } from './dialog-basico/dialog-basico.component';
 import { VistaComponent } from './vista/vista.component';
+import { VistaBotoneraComponent } from './vista/component/vista-botonera/vista-botonera.component';
 
 
 
@@ -15,7 +16,8 @@ import { VistaComponent } from './vista/vista.component';
   
     BotoneraTablaComponent,
     DialogBasicoComponent,
-    VistaComponent
+    VistaComponent,
+    VistaBotoneraComponent
   ],
   imports: [
     CommonModule,

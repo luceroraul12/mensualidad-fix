@@ -24,7 +24,8 @@ import { VistaComponent } from './vista/vista.component';
   ],
   exports:[
     BotoneraTablaComponent,
-    DialogBasicoComponent
+    DialogBasicoComponent,
+    VistaComponent
   ]
 })
 export class SharedModule { }

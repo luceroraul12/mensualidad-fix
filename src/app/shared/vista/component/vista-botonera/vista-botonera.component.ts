@@ -12,7 +12,15 @@ export class VistaBotoneraComponent implements OnInit {
     {
       titulo:"opcion 1",
       accion: () => alert("opcion 1")
-    }
+    },
+    {
+      titulo:"opcion 2",
+      accion: () => alert("opcion 2")
+    },
+    {
+      titulo:"opcion 3",
+      accion: () => alert("opcion 3")
+    },
   ]
 
   constructor() { }

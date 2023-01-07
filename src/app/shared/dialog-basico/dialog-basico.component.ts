@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dialog-basico',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-basico.component.css']
 })
 export class DialogBasicoComponent implements OnInit {
+
+  @Input()  titulo: string= "";
+  @Input()  subtitulo: string= "";
 
   constructor() { }
 

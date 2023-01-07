@@ -37,6 +37,7 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
   public displayedColumns: string[] = ['servicio', 'url',"esRepetible",'acciones'];
   public displayedColumnsSinUrl: string[] = ['servicio'];
 
+  @Input() esColoreable!: boolean;
   @Input() mostrarEnlace: boolean = false;
   @Input() mostrarRepetible: boolean = true;
   @Input() esRenglonClick: boolean = false;
@@ -106,4 +107,11 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
     this.dialog.open(ServicioDialogTablaFormularioComponent, {data: {...factura}});
   }
 
+  verificarColorear(factura: Factura): string{
+    return this.esColoreable
+        ? factura.esRepetible
+            ? "celda-repetible"
+            : "celda-unica"
+        : "";
+  }
 }

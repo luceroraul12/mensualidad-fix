@@ -8,7 +8,6 @@
         <td mat-cell *matCellDef="let element" [ngClass]="verificarColorear(element)"> 
             <div fxLayoutAlign="center center">
                 {{element.nombre}}
-                <div *ngIf="element.esRepetible">&nbsp;*</div>
             </div>    
         </td>
     </ng-container>

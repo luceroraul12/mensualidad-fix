@@ -1,7 +1,7 @@
 <div class="col">
     <div class="mx-2">
-        <button mat-raised-button color="primary" *ngFor="let item of list">
-            {{item}}
+        <button mat-raised-button color="primary" *ngFor="let item of list" (click)="item.accion()">
+            {{item.titulo}}
         </button>
     </div>
 </div>

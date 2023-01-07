@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Boton } from 'src/app/interfaces/boton.interface';
 
 @Component({
   selector: 'app-vista-botonera',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VistaBotoneraComponent implements OnInit {
 
-  public list: string[] = [
-    "opcion 1", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2"
+  public list: Boton[] = [
+    {
+      titulo:"opcion 1",
+      accion: () => alert("opcion 1")
+    }
   ]
 
   constructor() { }

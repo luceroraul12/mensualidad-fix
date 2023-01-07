@@ -4,6 +4,7 @@ import { MaterialModule } from '../material/material.module';
 import { BotoneraTablaComponent } from './botonera-tabla/botonera-tabla.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogBasicoComponent } from './dialog-basico/dialog-basico.component';
+import { VistaComponent } from './vista/vista.component';
 
 
 
@@ -13,7 +14,8 @@ import { DialogBasicoComponent } from './dialog-basico/dialog-basico.component';
   declarations: [
   
     BotoneraTablaComponent,
-    DialogBasicoComponent
+    DialogBasicoComponent,
+    VistaComponent
   ],
   imports: [
     CommonModule,

@@ -18,6 +18,7 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
   @ViewChild('formServicio') formServicio!: NgForm;
   @Input() esParaModificar: boolean = false;
   @Input() facturaModificable!: Factura;
+  @Input() facturaSeleccionadaSubtitulo: string = '';
 
   @Input() factura: Factura = {
     nombre: '',

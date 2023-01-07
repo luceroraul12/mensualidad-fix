@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VistaBotoneraComponent implements OnInit {
 
+  public list: string[] = [
+    "opcion 1", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2", "opcion 2"
+  ]
+
   constructor() { }
 
   ngOnInit(): void {

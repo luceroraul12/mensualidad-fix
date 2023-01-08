@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-vista',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vista.component.css']
 })
 export class VistaComponent implements OnInit {
+
+  @Input() titulo!: string;
 
   constructor() { }
 

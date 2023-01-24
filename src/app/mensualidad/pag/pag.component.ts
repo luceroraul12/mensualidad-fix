@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pago } from 'src/app/interfaces/pago.interface';
+import { PagoDto } from 'src/app/interfaces/pago.interface';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
 import { PagoService } from 'src/app/services/pago.service';
 
@@ -11,7 +11,7 @@ import { PagoService } from 'src/app/services/pago.service';
 })
 export class PagComponent implements OnInit {
 
-  public pagos!: Pago[];
+  public pagos!: PagoDto[];
 
   constructor(
     private pagoService: PagoService,

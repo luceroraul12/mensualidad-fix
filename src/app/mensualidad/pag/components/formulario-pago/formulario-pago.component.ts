@@ -3,8 +3,8 @@ import { FormControl, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { subscribeOn } from 'rxjs/internal/operators/subscribeOn';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
-import { Pago } from 'src/app/interfaces/pago.interface';
-import { Factura } from 'src/app/interfaces/servicio.interface';
+import { PagoDto } from 'src/app/interfaces/pago.interface';
+import { FacturaDto } from 'src/app/interfaces/servicio.interface';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
 import { PagoService } from 'src/app/services/pago.service';
 import { ServicioService } from 'src/app/services/servicio.service';
@@ -20,11 +20,11 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 })
 export class FormularioPagoComponent implements OnInit, OnDestroy{
 
-  @Input() serviciosDisponibles!: Factura[];
+  @Input() serviciosDisponibles!: FacturaDto[];
   @Input() usaFacturasPersonalizadas: boolean = false;
 
   @Input() esParaModificar: boolean = false;
-  @Input() pagoCreado!: Pago;
+  @Input() pagoCreado!: PagoDto;
 
   public orientacion!: string;
 
@@ -39,7 +39,7 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
   constructor(
     private servicioService: ServicioService,
     private pagoService: PagoService,
-    private tablaService: TablaServiceService<Pago>,
+    private tablaService: TablaServiceService<PagoDto>,
     private comunicadorService: ComunicadorService
 
   ) { 
@@ -56,11 +56,17 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
     if(!this.usaFacturasPersonalizadas && !this.esParaModificar){
       this.subs.add(
         this.servicioService.leer().subscribe(
-          (servicios: Factura[]) => this.serviciosDisponibles = servicios
+          (servicios: FacturaDto[]) => this.serviciosDisponibles = servicios
         )
       ) 
     } else if(this.esParaModificar){
-      this.serviciosDisponibles = [this.pagoCreado.factura];
+      // TODO: ver si esto no hay que modificarlo, solo lo arregle para que compilara
+      this.serviciosDisponibles = [{
+        id: this.pagoCreado.idFactura!,
+        nombre: this.pagoCreado.factura!,
+        url: "",
+        esRepetible: false
+      }];
     };
 
     //para especificar la fecha del formulario desde resumen
@@ -76,17 +82,23 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
 
   cargarFormulario(): void {
     console.log(this.formPago.value);
-    this.pagoCreado.factura = this.formPago.controls['servicio'].value;
-
+    let factura: FacturaDto = this.formPago.controls['servicio'].value;
+    let pagoDto: PagoDto = {
+      idFactura: factura.id,
+      fechaDePago: this.pagoCreado.fechaDePago,
+      pago: this.pagoCreado.pago,
+      comentario: this.pagoCreado.comentario
+    }
     if(!this.esParaModificar){
       this.subs.add(
-        this.pagoService.agregar(this.pagoCreado).subscribe( respuesta => {
+        this.pagoService.agregar(pagoDto).subscribe( respuesta => {
           this.tablaService.comunicadorFormularioTabla$.next({
             actividad: Actividad.CREAR,
             elemento: respuesta
           });
           this.resetear();
-        })
+        },
+        err => alert('error al intentar crear por formulario de pagos'))
       );
     } else {
       this.subs.add(
@@ -107,10 +119,10 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
 
   resetear():void {
     if(!this.esParaModificar){
-      let factura: Factura = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: '', esRepetible: false};
+      let factura: FacturaDto = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{id: 0, nombre: '', url: '', esRepetible: false};
     
       this.pagoCreado = {
-        factura: factura,
+        factura: factura.nombre,
         fechaDePago: this.esParaModificar ? this.pagoCreado.fechaDePago : this.fechaEmitida,
         comentario: ''
       };
@@ -122,6 +134,6 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
   }
 
   esURLValida(url: string): boolean{
-    return url.includes("http");
+    return url?.includes("http");
   }
 }

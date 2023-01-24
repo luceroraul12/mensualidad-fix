@@ -1,44 +1,49 @@
-<form #formServicio="ngForm" (ngSubmit)="cargarFormulario()">
-    <div fxLayout="row" fxLayoutGap="10">
-        <div>
-            <mat-form-field appearance="legacy">
-                <mat-label>Nombre del Servicio ...</mat-label>
-                <input 
-                matInput 
-                placeholder=""
-                required
-                name="servicio"
-                [(ngModel)]="factura.nombre"
-                minlength="5"
-                >
-                </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field appearance="legacy">
-                <mat-label>Pagina web ...</mat-label>
-                <input
+<app-dialog-basico titulo="Modificando factura" [subtitulo]="facturaSeleccionadaSubtitulo">
+    <form #formServicio="ngForm" (ngSubmit)="cargarFormulario()" contenido>
+        <div fxLayout="row" fxLayoutGap="10">
+            <div>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Nombre del Servicio ...</mat-label>
+                    <input 
                     matInput 
-                    placeholder="enlace"
+                    placeholder=""
                     required
-                    name="url"
-                    [(ngModel)]="factura.url"
-                    minlength="3"
-                >
-            </mat-form-field>
+                    name="servicio"
+                    [(ngModel)]="factura.nombre"
+                    minlength="5"
+                    >
+                    </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Pagina web ...</mat-label>
+                    <input
+                        matInput 
+                        placeholder="enlace"
+                        required
+                        name="url"
+                        [(ngModel)]="factura.url"
+                        minlength="3"
+                    >
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-slide-toggle
+                name="esRepetible"
+                [(ngModel)]="factura.esRepetible"
+                [checked]="factura.esRepetible">Repetible</mat-slide-toggle>
+            </div>
+            
         </div>
-        <div>
-            <mat-slide-toggle
-            name="esRepetible"
-            [(ngModel)]="factura.esRepetible"
-            [checked]="factura.esRepetible">Repetible</mat-slide-toggle>
-        </div>
-        <div>
-            <button
-                mat-raised-button 
-                color="primary" 
-                type="submit"
-                [disabled]="formServicio.invalid"
-            >Cargar</button>
-        </div>
+    </form>
+    <div botones>
+        <button
+            mat-raised-button 
+            color="primary" 
+            type="button"
+            [disabled]="formServicio.invalid"
+            (click)="cargarFormulario()"
+        >Cargar</button>
     </div>
-</form>
+    
+</app-dialog-basico>

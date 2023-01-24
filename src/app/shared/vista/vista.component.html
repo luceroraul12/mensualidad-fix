@@ -1,0 +1,15 @@
+<div class="col">
+    <div class="row my-3">
+        <mat-card>
+            <mat-card-actions>
+                <app-vista-botonera [list]="botones"></app-vista-botonera>
+            </mat-card-actions>
+            <mat-card-title>
+                {{titulo}}
+            </mat-card-title>
+            <mat-card-content>
+                <ng-content></ng-content>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

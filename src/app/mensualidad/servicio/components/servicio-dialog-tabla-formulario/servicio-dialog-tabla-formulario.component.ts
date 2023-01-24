@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { Factura } from 'src/app/interfaces/servicio.interface';
+import { FacturaDto } from 'src/app/interfaces/servicio.interface';
 import { ComunicadorService } from 'src/app/services/comunicador.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
 
@@ -13,12 +13,12 @@ import { TablaServiceService } from 'src/app/services/tabla-service.service';
 export class ServicioDialogTablaFormularioComponent implements OnInit, OnDestroy {
 
   private subscription!: Subscription;
-  public facturaCopia: Factura = {...this.factura};
+  public facturaCopia: FacturaDto = {...this.factura};
 
   constructor(
     public dialogRef: MatDialogRef<ServicioDialogTablaFormularioComponent>,
-    @Inject(MAT_DIALOG_DATA) public factura: Factura,
-    public tablaService: TablaServiceService<Factura>
+    @Inject(MAT_DIALOG_DATA) public factura: FacturaDto,
+    public tablaService: TablaServiceService<FacturaDto>
   ) { }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

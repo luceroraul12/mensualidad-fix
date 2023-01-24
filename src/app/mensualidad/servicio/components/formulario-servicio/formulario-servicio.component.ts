@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
-import { Factura } from 'src/app/interfaces/servicio.interface';
+import { FacturaDto } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
 
@@ -17,9 +17,11 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
 
   @ViewChild('formServicio') formServicio!: NgForm;
   @Input() esParaModificar: boolean = false;
-  @Input() facturaModificable!: Factura;
+  @Input() facturaModificable!: FacturaDto;
+  @Input() facturaSeleccionadaSubtitulo: string = '';
 
-  @Input() factura: Factura = {
+  @Input() factura: FacturaDto = {
+    id: 0,
     nombre: '',
     url: '',
     esRepetible: false
@@ -27,7 +29,7 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
 
   constructor(
     private servicioService: ServicioService,
-    private tablaService: TablaServiceService<Factura>
+    private tablaService: TablaServiceService<FacturaDto>
   ) { }
 
 
@@ -64,6 +66,7 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
   }
   resetear(){
     this.factura = {
+      id: 0,
       nombre: '',
       url: '',
       esRepetible: false

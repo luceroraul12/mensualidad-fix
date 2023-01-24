@@ -4,6 +4,7 @@ import { MensualidadComponent } from './mensualidad.component';
 import { PagComponent } from './pag/pag.component';
 import { ResumenComponent } from './resumen/resumen.component';
 import { ServicioComponent } from './servicio/servicio.component';
+import { UsuarioComponent } from '../usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'resumenes',
         component: ResumenComponent
+      },
+      {
+        path: "usuarios",
+        component: UsuarioComponent
       },
       {
         path: '**',

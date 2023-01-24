@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Pago } from 'src/app/interfaces/pago.interface';
-import { Factura } from 'src/app/interfaces/servicio.interface';
+import { PagoDto } from 'src/app/interfaces/pago.interface';
+import { FacturaDto } from 'src/app/interfaces/servicio.interface';
 import { PagoService } from 'src/app/services/pago.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
 
@@ -14,8 +14,8 @@ export class ResumenDialogPagoComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<ResumenDialogPagoComponent>,
-    @Inject(MAT_DIALOG_DATA) public facturaSeleccionada: Factura,
-    private tablaService: TablaServiceService<Pago>
+    @Inject(MAT_DIALOG_DATA) public facturaSeleccionada: FacturaDto,
+    private tablaService: TablaServiceService<PagoDto>
   ) { }
 
   ngOnInit(): void {

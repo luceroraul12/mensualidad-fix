@@ -21,6 +21,7 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
   @Input() facturaSeleccionadaSubtitulo: string = '';
 
   @Input() factura: FacturaDto = {
+    id: 0,
     nombre: '',
     url: '',
     esRepetible: false
@@ -65,6 +66,7 @@ export class FormularioServicioComponent implements OnInit, OnDestroy {
   }
   resetear(){
     this.factura = {
+      id: 0,
       nombre: '',
       url: '',
       esRepetible: false

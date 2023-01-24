@@ -2,10 +2,10 @@ import { Modelo } from "./entidad.interface";
 
 export interface PagoDto extends Modelo {
     id?: number;
-    idFactura?: number;
-    fechaDePago?: Date;
     pago?: number;
+    idFactura?: number;
     factura?: string;
+    fechaDePago?: Date;
     urlFactura?: string;
     comentario?: string;
 }

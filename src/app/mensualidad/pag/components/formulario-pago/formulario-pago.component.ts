@@ -62,7 +62,7 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
     } else if(this.esParaModificar){
       // TODO: ver si esto no hay que modificarlo, solo lo arregle para que compilara
       this.serviciosDisponibles = [{
-        id: this.pagoCreado.idFactura,
+        id: this.pagoCreado.idFactura!,
         nombre: this.pagoCreado.factura!,
         url: "",
         esRepetible: false
@@ -82,17 +82,23 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
 
   cargarFormulario(): void {
     console.log(this.formPago.value);
-    this.pagoCreado.factura = this.formPago.controls['servicio'].value;
-
+    let factura: FacturaDto = this.formPago.controls['servicio'].value;
+    let pagoDto: PagoDto = {
+      idFactura: factura.id,
+      fechaDePago: this.pagoCreado.fechaDePago,
+      pago: this.pagoCreado.pago,
+      comentario: this.pagoCreado.comentario
+    }
     if(!this.esParaModificar){
       this.subs.add(
-        this.pagoService.agregar(this.pagoCreado).subscribe( respuesta => {
+        this.pagoService.agregar(pagoDto).subscribe( respuesta => {
           this.tablaService.comunicadorFormularioTabla$.next({
             actividad: Actividad.CREAR,
             elemento: respuesta
           });
           this.resetear();
-        })
+        },
+        err => alert('error al intentar crear por formulario de pagos'))
       );
     } else {
       this.subs.add(
@@ -113,7 +119,7 @@ export class FormularioPagoComponent implements OnInit, OnDestroy{
 
   resetear():void {
     if(!this.esParaModificar){
-      let factura: FacturaDto = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{nombre: '', url: '', esRepetible: false};
+      let factura: FacturaDto = this.serviciosDisponibles ? this.serviciosDisponibles[0] :{id: 0, nombre: '', url: '', esRepetible: false};
     
       this.pagoCreado = {
         factura: factura.nombre,

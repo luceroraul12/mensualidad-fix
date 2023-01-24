@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Boton } from '../interfaces/boton.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogPorcentajeUsuarioComponent } from './component/dialog-porcentaje-usuario/dialog-porcentaje-usuario.component';
 
 @Component({
   selector: 'app-usuario',
@@ -15,13 +17,18 @@ export class UsuarioComponent implements OnInit {
     },
     {
       titulo: 'Asignar Porcentaje de Facturas',
-      accion: () => alert('asignar facturas')
+      accion: () => this.abrirDialogPorcentajes()
     }
   ]
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
   }
 
+  abrirDialogPorcentajes(): void {
+    this.dialog.open(DialogPorcentajeUsuarioComponent);
+  }
 }

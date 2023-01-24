@@ -21,7 +21,9 @@ export class TablaUsuarioComponent implements OnInit {
   }
 
   eliminar(usuario: UsuarioDto): void {
-
+    this.usuarioService.eliminar(usuario).subscribe(
+      respuesta => alert(`El usuario ${usuario.usuario} fue eliminado`),
+      error => alert(`Problemas al intentar borrar al user: ${usuario.usuario}`));
   }
 
   dialogModificar(usuario: UsuarioDto): void {

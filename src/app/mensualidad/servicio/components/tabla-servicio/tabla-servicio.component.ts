@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
-import { Factura } from 'src/app/interfaces/servicio.interface';
+import { FacturaDto } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
 import { ServicioDialogTablaFormularioComponent } from '../servicio-dialog-tabla-formulario/servicio-dialog-tabla-formulario.component';
@@ -42,15 +42,15 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
   @Input() mostrarRepetible: boolean = true;
   @Input() esRenglonClick: boolean = false;
   @Input() tituloPersonalizado: string = "Servicios";
-  @Input() servicios: Factura[] = [];
+  @Input() servicios: FacturaDto[] = [];
 
-  @Output() renglonClickeado: EventEmitter<Factura> = new EventEmitter();
+  @Output() renglonClickeado: EventEmitter<FacturaDto> = new EventEmitter();
 
-  @ViewChild("tabla") public tabla!: MatTable<Factura>;
+  @ViewChild("tabla") public tabla!: MatTable<FacturaDto>;
 
 
   constructor(
-    private tablaService: TablaServiceService<Factura>,
+    private tablaService: TablaServiceService<FacturaDto>,
     private servicioService: ServicioService,
     private dialog: MatDialog,
   ) { }
@@ -83,7 +83,7 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
     );
   }
 
-  eliminar(factura: Factura){
+  eliminar(factura: FacturaDto){
     this.servicioService.eliminar(factura).subscribe(
       respuesta => {
         console.log("servicio eliminado");
@@ -96,18 +96,18 @@ export class TablaServicioComponent implements OnInit, OnDestroy {
     
   }
 
-  clickearRenglon(factura: Factura):void {
+  clickearRenglon(factura: FacturaDto):void {
     if(this.esRenglonClick){
       this.renglonClickeado.emit(factura);
     console.log('clickeado', factura);
     }
   }
 
-  dialogModificar(factura: Factura){
+  dialogModificar(factura: FacturaDto){
     this.dialog.open(ServicioDialogTablaFormularioComponent, {data: {...factura}});
   }
 
-  verificarColorear(factura: Factura): string{
+  verificarColorear(factura: FacturaDto): string{
     return this.esColoreable
         ? factura.esRepetible
             ? "celda-repetible"

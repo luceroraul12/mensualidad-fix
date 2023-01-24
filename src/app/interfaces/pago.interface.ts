@@ -1,9 +1,11 @@
 import { Modelo } from "./entidad.interface";
-import { Factura } from "./servicio.interface";
 
-export interface Pago extends Modelo {
-    fechaDePago: Date;
+export interface PagoDto extends Modelo {
+    id?: number;
+    idFactura?: number;
+    fechaDePago?: Date;
     pago?: number;
-    factura: Factura;
+    factura?: string;
+    urlFactura?: string;
     comentario?: string;
 }

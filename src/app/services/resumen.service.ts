@@ -2,10 +2,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Pago } from '../interfaces/pago.interface';
+import { PagoDto } from '../interfaces/pago.interface';
 import { ResumenDto } from '../interfaces/resumen-dto.interface';
 import { ResumenRespuesta } from '../interfaces/resumen-respuesta.interface';
-import { Factura } from '../interfaces/servicio.interface';
+import { FacturaDto } from '../interfaces/servicio.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,21 +25,21 @@ export class ResumenService {
   }
 
  //////////////////////////////////////////////// //
-  verificarExistenciaFacturaAgregar(pago: Pago, facturas: Factura[]): Factura[]{
-    let resultado: Factura[];
+  verificarExistenciaFacturaAgregar(pago: PagoDto, facturas: FacturaDto[]): FacturaDto[]{
+    let resultado: FacturaDto[] = [];
     let estaContenido: boolean = false;
 
-    facturas.forEach(({id}) => {
-      if(id == pago.factura.id){
-        estaContenido = true;
-      }
-    });
+    // facturas.forEach(({id}) => {
+    //   if(id == pago.idFactura){
+    //     estaContenido = true;
+    //   }
+    // });
 
-    if(estaContenido){
-      resultado = facturas.filter( ({id}) => id != pago.factura.id);
-    } else {
-      resultado = [... facturas, pago.factura];
-    }
+    // if(estaContenido){
+    //   resultado = facturas.filter( ({id}) => id != pago.idFactura);
+    // } else {
+    //   resultado = [... facturas, pago.factura];
+    // }
     return resultado;
   }
 

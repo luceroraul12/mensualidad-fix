@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Actividad } from 'src/app/interfaces/informacionFormularioTabla.interface';
-import { Pago } from 'src/app/interfaces/pago.interface';
+import { PagoDto } from 'src/app/interfaces/pago.interface';
 import { PagoService } from 'src/app/services/pago.service';
 import { TablaServiceService } from 'src/app/services/tabla-service.service';
 import { PagDialogComponent } from '../pag-dialog/pag-dialog.component';
@@ -21,16 +21,16 @@ import { PagDialogComponent } from '../pag-dialog/pag-dialog.component';
 })
 export class TablaPagoComponent implements OnInit {
 
-  @Input() pagos!: Pago[];
-  @Output() eliminarPagoEspecifico: EventEmitter<Pago> = new EventEmitter();
+  @Input() pagos!: PagoDto[];
+  @Output() eliminarPagoEspecifico: EventEmitter<PagoDto> = new EventEmitter();
 
-  @ViewChild("tabla") public tabla!: MatTable<Pago>;
+  @ViewChild("tabla") public tabla!: MatTable<PagoDto>;
 
   public displayedColumns: string[] = ['factura', 'fechaPago', 'pagoEfectuado', 'acciones']
 
   constructor(
     private pagoService: PagoService,
-    private tablaService: TablaServiceService<Pago>,
+    private tablaService: TablaServiceService<PagoDto>,
     private dialog: MatDialog
   ) { }
 
@@ -59,7 +59,7 @@ export class TablaPagoComponent implements OnInit {
   }
 
 
-  eliminar(pago: Pago){
+  eliminar(pago: PagoDto){
     this.pagoService.eliminar(pago).subscribe(
       respuesta => {
         console.log("servicio eliminado");
@@ -72,12 +72,12 @@ export class TablaPagoComponent implements OnInit {
     this.eliminarPagoEspecifico.emit(pago);
   }
 
-  modificar(pago: Pago): void {
+  modificar(pago: PagoDto): void {
     let esVer: boolean = false;
     this.dialog.open(PagDialogComponent, {data: {pago, esVer}});
   }
 
-  ver(pago: Pago): void {
+  ver(pago: PagoDto): void {
     let esVer: boolean = true;
     this.dialog.open(PagDialogComponent, {data: {
       pago,
@@ -85,7 +85,7 @@ export class TablaPagoComponent implements OnInit {
     }});
   }
 
-  tieneComentario(pago: Pago): boolean{
+  tieneComentario(pago: PagoDto): boolean{
     let resultado: boolean = false;
     try{
       resultado = pago.comentario!.length > 1;

@@ -1,9 +1,9 @@
-import { Pago } from "./pago.interface";
-import { Factura } from "./servicio.interface";
+import { PagoDto } from "./pago.interface";
+import { FacturaDto } from "./servicio.interface";
 
 export interface ResumenRespuesta {
-    facturasPagadas: Factura[];
-    facturasImpagas: Factura[];
-    pagosRealizados: Pago[];
+    facturasPagadas: FacturaDto[];
+    facturasImpagas: FacturaDto[];
+    pagosRealizados: PagoDto[];
 }
 

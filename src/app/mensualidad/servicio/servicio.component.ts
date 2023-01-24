@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Factura } from 'src/app/interfaces/servicio.interface';
+import { FacturaDto } from 'src/app/interfaces/servicio.interface';
 import { ServicioService } from 'src/app/services/servicio.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ServicioService } from 'src/app/services/servicio.service';
 })
 export class ServicioComponent implements OnInit {
 
-  public facturas!: Factura[];
+  public facturas!: FacturaDto[];
 
   constructor(
     private servicioService: ServicioService,

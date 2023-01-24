@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Boton } from 'src/app/interfaces/boton.interface';
 
 @Component({
@@ -8,7 +8,7 @@ import { Boton } from 'src/app/interfaces/boton.interface';
 })
 export class VistaBotoneraComponent implements OnInit {
 
-  public list: Boton[] = [
+  @Input() list: Boton[] = [
     {
       titulo:"opcion 1",
       accion: () => alert("opcion 1")

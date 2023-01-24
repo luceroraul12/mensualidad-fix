@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Boton } from 'src/app/interfaces/boton.interface';
 
 @Component({
   selector: 'app-vista',
@@ -6,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./vista.component.css']
 })
 export class VistaComponent implements OnInit {
+  @Input() botones!: Boton[];
 
   @Input() titulo!: string;
 

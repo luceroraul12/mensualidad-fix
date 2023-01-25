@@ -7,6 +7,7 @@ import { TablaUsuarioComponent } from './component/tabla-usuario/tabla-usuario.c
 import { DialogPorcentajeUsuarioComponent } from './component/dialog-porcentaje-usuario/dialog-porcentaje-usuario.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MaterialModule,
     SharedModule,
     NgxChartsModule,

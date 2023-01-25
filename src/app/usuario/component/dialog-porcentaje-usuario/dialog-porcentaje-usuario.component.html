@@ -7,9 +7,51 @@
   [legendPosition]="legendPosition"
   [labels]="showLabels"
   [doughnut]="isDoughnut"
-  
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)"
   >
 </ngx-charts-pie-chart>
+<h2>
+  <div>La suma de valores es 100? <hr> Resultado: <strong>{{raul.value + mondongus.value + shoverto.value}}</strong> {{this.cumpleEquivalencia() ? "CUMPLE A PLENO" : "CAIDO"}}</div>
+
+</h2>
+<div>
+  <div>{{raul.name}} - {{raul.value}}</div>
+  <div>
+    <mat-slider
+  thumbLabel
+  [(ngModel)]="raul.value"
+  tickInterval="1000"
+  step="1"
+  min="0"
+  max="100"
+  aria-label="units"
+  (valueChange)="changeData()"></mat-slider>
+  </div>
+</div>
+<div>
+  <div>{{mondongus.name}} - {{mondongus.value}}</div>
+  <div>
+    <mat-slider
+  thumbLabel
+  [(ngModel)]="mondongus.value"
+  tickInterval="1000"
+  step="1"
+  min="0"
+  max="100"
+  aria-label="units"
+  (valueChange)="changeData()"></mat-slider>
+  </div>
+</div>
+<div>
+  <div>{{shoverto.name}} - {{shoverto.value}}</div>
+  <div>
+    <mat-slider
+  thumbLabel
+  [(ngModel)]="shoverto.value"
+  tickInterval="1000"
+  step="1"
+  min="0"
+  max="100"
+  aria-label="units"
+  (valueChange)="changeData()"></mat-slider>
+  </div>
+</div>

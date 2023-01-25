@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { LegendPosition } from '@swimlane/ngx-charts';
 
+
+export interface DataChart{
+  name: string,
+  value: number,
+  extra: {
+    code: string
+  }
+}
+
 @Component({
   selector: 'app-dialog-porcentaje-usuario',
   templateUrl: './dialog-porcentaje-usuario.component.html',
@@ -13,40 +22,48 @@ export class DialogPorcentajeUsuarioComponent implements OnInit {
 
   // options
   gradient: boolean = false;
-  showLegend: boolean = true;
+  showLegend: boolean = false;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
   legendPosition: LegendPosition = LegendPosition.Below;
 
-  colorScheme =  "nightLights";
+  public raul!: DataChart;
+  public mondongus!: DataChart;
+  public shoverto!: DataChart;
+  public colorScheme!: string;
 
-  public data: any = [
-  {
-    "name": "Raul",
-    "value": 60,
-    "extra": {
-      "code": "Homito"
-    }
-  },
-  {
-    "name": "Homito",
-    "value": 40,
-    "extra": {
-      "code": "Mgs"
-    }
-  },
-  {
-    "name": "Shoverto",
-    "value": 90,
-    "extra": {
-      "code": "Shover"
-    }
-  }
-]
+  public data: DataChart[] = []
 
   constructor() { }
 
   ngOnInit(): void {
+    this.raul = {
+      name: 'raul',
+      extra: {
+        code: "raul"
+      },
+      value: 0
+    };
+    this.mondongus = {
+      name: 'homito',
+      extra: {
+        code: "homito"
+      },
+      value: 0
+    };
+    this.shoverto = {
+      name: 'Shoverto',
+      extra: {
+        code: "Shoverto"
+      },
+      value: 0
+    }
+    this.data = [
+      this.mondongus,
+      this.raul,
+      this.shoverto
+    ]
+    this.colorScheme = this.cumpleEquivalencia() ? "nightLights" : "neons";
   }
 
 
@@ -60,5 +77,15 @@ export class DialogPorcentajeUsuarioComponent implements OnInit {
 
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  changeData(): void {
+    this.data = [...this.data];
+    this.colorScheme = this.cumpleEquivalencia() ? "fire" : "neons";
+  }
+
+  cumpleEquivalencia(): boolean {
+    return this.data.map(a => a.value)
+            .reduce((a,b) => a+b) == 100;
   }
 }

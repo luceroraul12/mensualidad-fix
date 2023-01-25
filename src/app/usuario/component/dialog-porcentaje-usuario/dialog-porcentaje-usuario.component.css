@@ -1,3 +1,7 @@
 ::ng-deep .ngx-charts { 
     fill: #fff !important;
  }
+
+ mat-slider {
+    width: 100%;
+  }

@@ -1,4 +1,4 @@
-<ngx-charts-pie-chart
+<!-- <ngx-charts-pie-chart
   [view]="view"
   [scheme]="colorScheme"
   [results]="data"
@@ -54,4 +54,21 @@
   aria-label="units"
   (valueChange)="changeData()"></mat-slider>
   </div>
-</div>
+</div> -->
+<!-- <pre>{{porcentajes | json}}</pre> -->
+
+<h4>Basic mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select>
+    <mat-option value="primero">
+      primero
+    </mat-option>
+    <mat-option value="segundo">
+      segundo
+    </mat-option>
+    <mat-option value="tercero">
+      tercero
+    </mat-option>
+  </mat-select>
+</mat-form-field>

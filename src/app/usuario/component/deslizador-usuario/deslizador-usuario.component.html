@@ -1,1 +1,9 @@
-<p>deslizador-usuario works!</p>
+<h3>{{usuario.usuario}}</h3>
+<mat-slider
+thumbLabel
+[(ngModel)]="usuario.porcentaje"
+tickInterval="1000"
+step="1"
+min="0"
+max="100"
+aria-label="units"></mat-slider>

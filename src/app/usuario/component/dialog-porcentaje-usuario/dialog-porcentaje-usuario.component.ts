@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { LegendPosition } from '@swimlane/ngx-charts';
+import { PorcentajeUsuariosFacturas } from 'src/app/interfaces/porcentaje-usuarios-facturas.interface';
+import { FacturaDto } from 'src/app/interfaces/servicio.interface';
+import { UsuarioDto } from 'src/app/interfaces/usuarioDto.interface';
+import { PorcentajeUsuariosFacturasService } from 'src/app/services/porcentaje-usuarios-facturas.service';
+import { ServicioService } from 'src/app/services/servicio.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 
 export interface DataChart{
@@ -31,38 +38,52 @@ export class DialogPorcentajeUsuarioComponent implements OnInit {
   public mondongus!: DataChart;
   public shoverto!: DataChart;
   public colorScheme!: string;
+  public porcentajes!: PorcentajeUsuariosFacturas[];
+  public facturas!: FacturaDto[];
+  public usuarios!: UsuarioDto[];
+  public usuariosMarcados!: UsuarioDto[];
+  public facturaMarcada!: FacturaDto;
 
   public data: DataChart[] = []
 
-  constructor() { }
+  constructor(
+    private porcentajeService: PorcentajeUsuariosFacturasService,
+    private facturaService: ServicioService,
+    private usuarioService: UsuarioService
+    ) { }
 
   ngOnInit(): void {
-    this.raul = {
-      name: 'raul',
-      extra: {
-        code: "raul"
-      },
-      value: 0
-    };
-    this.mondongus = {
-      name: 'homito',
-      extra: {
-        code: "homito"
-      },
-      value: 0
-    };
-    this.shoverto = {
-      name: 'Shoverto',
-      extra: {
-        code: "Shoverto"
-      },
-      value: 0
-    }
-    this.data = [
-      this.mondongus,
-      this.raul,
-      this.shoverto
-    ]
+    this.facturaService.leer().subscribe(res => this.facturas = res);
+    this.usuarioService.leer().subscribe(res =>  this.usuarios = res);
+
+    this.porcentajeService.leer().subscribe(r => this.porcentajes = r);
+
+    // this.raul = {
+    //   name: 'raul',
+    //   extra: {
+    //     code: "raul"
+    //   },
+    //   value: 0
+    // };
+    // this.mondongus = {
+    //   name: 'homito',
+    //   extra: {
+    //     code: "homito"
+    //   },
+    //   value: 0
+    // };
+    // this.shoverto = {
+    //   name: 'Shoverto',
+    //   extra: {
+    //     code: "Shoverto"
+    //   },
+    //   value: 0
+    // }
+    // this.data = [
+    //   this.mondongus,
+    //   this.raul,
+    //   this.shoverto
+    // ]
     this.colorScheme = this.cumpleEquivalencia() ? "nightLights" : "neons";
   }
 
@@ -87,5 +108,8 @@ export class DialogPorcentajeUsuarioComponent implements OnInit {
   cumpleEquivalencia(): boolean {
     return this.data.map(a => a.value)
             .reduce((a,b) => a+b) == 100;
+  }
+
+  actualizar(): void {
   }
 }

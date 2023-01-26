@@ -56,19 +56,28 @@
   </div>
 </div> -->
 <!-- <pre>{{porcentajes | json}}</pre> -->
-
-<h4>Basic mat-select</h4>
+<!-- <pre>{{data | json}}</pre> -->
 <mat-form-field appearance="fill">
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    <mat-option value="primero">
-      primero
-    </mat-option>
-    <mat-option value="segundo">
-      segundo
-    </mat-option>
-    <mat-option value="tercero">
-      tercero
-    </mat-option>
+  <mat-label>Servicios disponibles</mat-label>
+  <mat-select [(ngModel)]="facturaMarcada">
+    <mat-option *ngFor="let item of facturas" [value]="item">{{item.nombre}}</mat-option>
   </mat-select>
 </mat-form-field>
+<mat-form-field appearance="fill" >
+  <mat-label>Usuarios disponibles</mat-label>
+  <mat-select  multiple (closed)="actualizar()" [(ngModel)]="usuariosMarcados">
+    <mat-option *ngFor="let user of usuarios" [value]="user">{{user.usuario}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<pre>{{facturaMarcada | json}}</pre>
+<pre>{{usuariosMarcados | json}}</pre>
+<!-- <ngx-charts-pie-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="data"
+  [gradient]="gradient"
+  [legend]="showLegend"
+  [legendPosition]="legendPosition"
+  [labels]="showLabels"
+  [doughnut]="isDoughnut">
+</ngx-charts-pie-chart> -->

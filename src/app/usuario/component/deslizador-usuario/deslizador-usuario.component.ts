@@ -16,6 +16,7 @@ export class DeslizadorUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.usuario.porcentaje = 1;
   }
 
   actualizar(): void {

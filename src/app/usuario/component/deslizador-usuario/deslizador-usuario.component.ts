@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UsuarioDto } from 'src/app/interfaces/usuarioDto.interface';
 
 @Component({
   selector: 'app-deslizador-usuario',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deslizador-usuario.component.css']
 })
 export class DeslizadorUsuarioComponent implements OnInit {
+  @Input() usuario!: UsuarioDto;
 
   constructor() { }
 

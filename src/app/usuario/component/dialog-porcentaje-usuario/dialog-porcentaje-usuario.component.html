@@ -56,7 +56,6 @@
   </div>
 </div> -->
 <!-- <pre>{{porcentajes | json}}</pre> -->
-<!-- <pre>{{data | json}}</pre> -->
 <mat-form-field appearance="fill">
   <mat-label>Servicios disponibles</mat-label>
   <mat-select [(ngModel)]="facturaMarcada">
@@ -69,9 +68,14 @@
     <mat-option *ngFor="let user of usuarios" [value]="user">{{user.usuario}}</mat-option>
   </mat-select>
 </mat-form-field>
-<pre>{{facturaMarcada | json}}</pre>
-<pre>{{usuariosMarcados | json}}</pre>
-<!-- <ngx-charts-pie-chart
+<div>
+  <app-deslizador-usuario *ngFor="let item of usuariosMarcados" [usuario]="item" [porcentaje]="item.porcentaje!" fxLayout="row"></app-deslizador-usuario>
+</div>
+<!-- <pre>{{data | json}}</pre> -->
+
+<!-- <pre>{{facturaMarcada | json}}</pre> -->
+<!-- <pre>{{usuariosMarcados | json}}</pre> -->
+<ngx-charts-pie-chart *ngIf="usuariosMarcados"
   [view]="view"
   [scheme]="colorScheme"
   [results]="data"
@@ -79,5 +83,6 @@
   [legend]="showLegend"
   [legendPosition]="legendPosition"
   [labels]="showLabels"
-  [doughnut]="isDoughnut">
-</ngx-charts-pie-chart> -->
+  [doughnut]="isDoughnut"
+  >
+</ngx-charts-pie-chart>

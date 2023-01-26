@@ -6,6 +6,7 @@ import { FacturaDto } from 'src/app/interfaces/servicio.interface';
 import { UsuarioDto } from 'src/app/interfaces/usuarioDto.interface';
 import { PorcentajeUsuariosFacturasService } from 'src/app/services/porcentaje-usuarios-facturas.service';
 import { ServicioService } from 'src/app/services/servicio.service';
+import { UsuarioComunicacionService } from 'src/app/services/usuario-comunicacion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 
@@ -44,12 +45,13 @@ export class DialogPorcentajeUsuarioComponent implements OnInit {
   public usuariosMarcados!: UsuarioDto[];
   public facturaMarcada!: FacturaDto;
 
-  public data: DataChart[] = []
+  public data: DataChart[] = [];
 
   constructor(
     private porcentajeService: PorcentajeUsuariosFacturasService,
     private facturaService: ServicioService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private usuarioComunicadorService: UsuarioComunicacionService
     ) { }
 
   ngOnInit(): void {
@@ -57,52 +59,13 @@ export class DialogPorcentajeUsuarioComponent implements OnInit {
     this.usuarioService.leer().subscribe(res =>  this.usuarios = res);
 
     this.porcentajeService.leer().subscribe(r => this.porcentajes = r);
-
-    // this.raul = {
-    //   name: 'raul',
-    //   extra: {
-    //     code: "raul"
-    //   },
-    //   value: 0
-    // };
-    // this.mondongus = {
-    //   name: 'homito',
-    //   extra: {
-    //     code: "homito"
-    //   },
-    //   value: 0
-    // };
-    // this.shoverto = {
-    //   name: 'Shoverto',
-    //   extra: {
-    //     code: "Shoverto"
-    //   },
-    //   value: 0
-    // }
-    // this.data = [
-    //   this.mondongus,
-    //   this.raul,
-    //   this.shoverto
-    // ]
-    this.colorScheme = this.cumpleEquivalencia() ? "nightLights" : "neons";
-  }
-
-
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-
-  changeData(): void {
-    this.data = [...this.data];
-    this.colorScheme = this.cumpleEquivalencia() ? "fire" : "neons";
+    this.usuarioComunicadorService.comunicador$.subscribe(
+      user => {
+        let index: number = this.usuariosMarcados.findIndex(({id}) => id == user.id);
+        this.usuariosMarcados[index].porcentaje = user.porcentaje;
+        this.actualizar();
+      }
+    );
   }
 
   cumpleEquivalencia(): boolean {
@@ -111,5 +74,15 @@ export class DialogPorcentajeUsuarioComponent implements OnInit {
   }
 
   actualizar(): void {
+    let data: DataChart[] = [];
+    this.usuariosMarcados.forEach(user => {
+      data.push({
+        name: user.usuario,
+        value: user.porcentaje!,
+        extra: {code: user.usuario}
+      });
+    });
+    this.data = [...data];
+    this.colorScheme = this.cumpleEquivalencia() ? "fire" : "neons";
   }
 }

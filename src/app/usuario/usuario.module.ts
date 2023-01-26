@@ -9,6 +9,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeslizadorUsuarioComponent } from './component/deslizador-usuario/deslizador-usuario.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -23,6 +24,7 @@ import { DeslizadorUsuarioComponent } from './component/deslizador-usuario/desli
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     MaterialModule,
     SharedModule,
     NgxChartsModule,
